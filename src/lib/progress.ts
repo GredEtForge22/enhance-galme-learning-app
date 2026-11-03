@@ -143,7 +143,7 @@ export function sanitize(raw: unknown): Progress | null {
     p.rec.bestStreak = num(raw.rec.bestStreak);
     p.rec.bestDay = num(raw.rec.bestDay);
   }
-  for (const [k, v] of entries(raw.badges, 60)) if (safeKey(k)) p.badges[k] = num(v);
+  for (const [k, v] of entries(raw.badges, 150)) if (safeKey(k)) p.badges[k] = num(v);
   for (const [k, v] of entries(raw.flags, 60)) if (safeKey(k)) p.flags[k] = v === true;
   if (isObj(raw.daily)) p.daily = { d: num(raw.daily.d, -1, -1), done: raw.daily.done === true, score: num(raw.daily.score, 0, 0, 100), bonus: num(raw.daily.bonus, -1, -1) };
   if (isObj(raw.resume) && typeof raw.resume.lesson === "string" && safeKey(raw.resume.lesson)) p.resume.lesson = raw.resume.lesson;
