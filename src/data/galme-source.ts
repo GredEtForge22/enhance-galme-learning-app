@@ -83,6 +83,7 @@ viwansaj|bonsoir|3
 kaska|chapeau|3
 namen kaska|prendre son chapeau = féliciter|3
 vayara sola pazo|bonne nuit|3
+aleksi|aller au ski|3
 sola|soleil|3
 pazo|paix|3
 pajol|l'avare|3
@@ -152,6 +153,6 @@ ena ve-sela zebo san|je vendrais pour ceci|5
 ena tsushima sivo|je te domine|5
 ena poko spozi na Galme, thoda, ena vi spozi na franzi|je parle un peu le galme, mais je parle bien le français|5`;
 export const TD:string[]=["Pronom","Particule","Verbe","Expression","Nom","Phrase"];
-export const TX:Record<string,string>={siyatura:"Nom",vi:"Adverbe",roloza:"Adverbe",eh:"Pronom",poniv:"Particule",delora:"Verbe",credo:"Verbe",kaska:"Nom",pajol:"Nom",visna:"Nom",nas:"Particule","namen kaska":"Expression",von:"Nom",vonona:"Nom",morila:"Nom",gabei:"Expression",san:"Pronom",lazo:"Adverbe",seran:"Pronom",sogno:"Nom",najai:"Pronom",sola:"Nom",pazo:"Nom",vayara:"Nom",vrayama:"Adverbe",nuna:"Adverbe",zolo:"Adjectif",poko:"Adverbe","sali-vuro":"Pronom",varo:"Adjectif",bela:"Adjectif",spezo:"Adjectif",deziro:"Adjectif",shapagna:"Adjectif",franzi:"Adjectif"};
+export const TX:Record<string,string>={aleksi:"Expression",siyatura:"Nom",vi:"Adverbe",roloza:"Adverbe",eh:"Pronom",poniv:"Particule",delora:"Verbe",credo:"Verbe",kaska:"Nom",pajol:"Nom",visna:"Nom",nas:"Particule","namen kaska":"Expression",von:"Nom",vonona:"Nom",morila:"Nom",gabei:"Expression",san:"Pronom",lazo:"Adverbe",seran:"Pronom",sogno:"Nom",najai:"Pronom",sola:"Nom",pazo:"Nom",vayara:"Nom",vrayama:"Adverbe",nuna:"Adverbe",zolo:"Adjectif",poko:"Adverbe","sali-vuro":"Pronom",varo:"Adjectif",bela:"Adjectif",spezo:"Adjectif",deziro:"Adjectif",shapagna:"Adjectif",franzi:"Adjectif"};
 export const TO:string[]=["Pronom","Verbe","Nom","Adjectif","Adverbe","Particule","Expression","Phrase"];
 export const TT:Record<string,string>={Pronom:"Pronoms",Verbe:"Verbes",Nom:"Noms",Adjectif:"Adjectifs",Adverbe:"Adverbes",Particule:"Particules et petits mots",Expression:"Expressions",Phrase:"Phrases"};
