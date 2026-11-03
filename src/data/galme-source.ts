@@ -49,6 +49,7 @@ saroke|venir|2
 varoka|aller|2
 sumno|douter|2
 besara|embrasser|2
+agno|voir|2
 lagna|entendre|2
 loroke|faire / travailler|2
 sagne|savoir|2
