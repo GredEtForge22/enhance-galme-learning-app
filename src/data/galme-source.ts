@@ -36,6 +36,7 @@ skoro bi|étant donné que|1
 bardio|grâce à|1
 na|le / la|1
 vi|oui / vrai / bien / bon|1
+roloza|bien/super/génial|1
 eh|quoi|1
 san|ça / ce / cette / cet|1
 lazo|pourquoi|1
@@ -50,10 +51,10 @@ sagne|savoir|2
 sogno|personne|2
 kanora (kenara)|comprendre / pouvoir|2
 devora|devoir|2
-vramdra|prendre|2
-emvrare|acheter|2
-katya|couper|2
-vendre|vendre|2
+namen|prendre|2
+maha|acheter|2
+catya|couper|2
+vendre|sela|2
 daroke|donner|2
 amora|aimer|2
 manka|manquer|2
@@ -66,14 +67,23 @@ kuye|dire|2
 selore|dire|2
 malo|penser|2
 dormara|se reposer|2
-najai|cette|2
+najai|Elle/Il/Lui|2
 hesidare|hésiter|2
 tsushima|dominer|2
+delora|vouloir|2
+credo|croire|2
 zhoyama|bonjour|3
 viwansaj|bonsoir|3
+kaska|chapeau|3
+namen kaska|prendre son chapeau = féliciter|3
 vayara sola pazo|bonne nuit|3
 sola|soleil|3
 pazo|paix|3
+pajol|l'avare|3
+visna|verre|3
+nas|en|3
+von|eau|3
+vodka|vonona|3
 vayara|résultat|3
 nasamora|au revoir|3
 chi|merci|3
@@ -86,6 +96,7 @@ poko|un peu/petit|3
 sali-vuro|à lui|3
 mona|argent / monnaie|4
 varo|grand|4
+morila|tristesse|4
 zhomer|la loi|4
 sosiede|la société|4
 lliochi|yeux|4
@@ -111,6 +122,7 @@ bela|beau / belle|4
 spezo|spécial|4
 deziro|désiré|4
 puto|pute|4
+gabei|pardon|4
 zald|fils|4
 shapagna|impossible / pas permi|4
 ena amora siva|je t’aime|5
@@ -129,7 +141,7 @@ thoda ena malo malo ena|mais je pense par moi-même|5
 ena fu-saroke nuna, devora sha hesidare|je viens maintenant, pas besoin d’hésiter|5
 narai pre-daroke sivo mona, thodo siva pre-vramdra sha|il t’a donné ton argent, mais tu ne l’as pas pris|5
 dia zolo fu-sagne|dieu seul saura|5
-ena ve-sela zebo san|je voudrais ceci|5
+ena ve-sela zebo san|je vendrais pour ceci|5
 ena tsushima sivo|je te domine|5
 ena poko spozi na Galme, thoda, ena vi spozi na franzi|je parle un peu le galme, mais je parle bien le français|5`;
 export const TD:string[]=["Pronom","Particule","Verbe","Expression","Nom","Phrase"];
