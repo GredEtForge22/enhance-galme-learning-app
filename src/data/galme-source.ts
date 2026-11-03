@@ -97,7 +97,7 @@ sali-vuro|à lui|3
 mona|argent / monnaie|4
 varo|grand|4
 morila|tristesse|4
-zhomer|la loi|4
+loyu|la loi|4
 sosiede|la société|4
 lliochi|yeux|4
 fayida|échec / faillite|4
