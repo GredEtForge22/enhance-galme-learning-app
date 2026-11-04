@@ -1,6 +1,7 @@
 export const norm = (s: string) =>
   s
     .toLowerCase()
+    .replace(/й/g, "n") // accepte й comme n
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]/g, "");
