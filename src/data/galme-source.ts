@@ -28,6 +28,7 @@ rae|son / sa / à lui / à elle|1
 lanoslo|notre / dans notre|1
 o|comme / avec / à|1
 bi|que|1
+su|sur|1
 eda|et|1
 odia|ou|1
 thoda|mais|1
@@ -46,6 +47,7 @@ durama|durant/pendant|1
 ilie|être|2
 lio|avoir|2
 saroke|venir|2
+rola|rouler|2
 varoka|aller|2
 sumйo|douter|2
 besara|embrasser|2
