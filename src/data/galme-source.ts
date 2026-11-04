@@ -76,6 +76,7 @@ najai|Elle/Il/Lui|2
 siyatura|signature|2
 hesidare|hésiter|2
 tsushima|dominer|2
+yusso|apprendre|2
 delora|vouloir|2
 credo|croire|2
 zhoyama|bonjour|3
@@ -86,6 +87,9 @@ vayara sola pazo|bonne nuit|3
 aleksi|aller au ski|3
 sola|soleil|3
 pazo|paix|3
+langno|langue|3
+anapi|amour pur, dévoué|3
+flezano|coup de foudre|3
 pajol|l'avare|3
 visna|verre|3
 nas|en|3
@@ -143,6 +147,7 @@ siva kanora-ko ?|comprends-tu ?|5
 ena spozi vi|je parle bien|5
 vosu spozi-ko ?|vous parlez ?|5
 siva amora eh-ko ?|tu aimes quoi ?|5
+Ena yusso o kenara sivo йas son langйo|J'apprend à te comprendre dans ta langue|5
 san eh san-ko ?|c’est quoi ça ?|5
 san ilie lano fozel|ça, c’est mon peuple|5
 thoda ena malo malo ena|mais je pense par moi-même|5
@@ -153,6 +158,6 @@ ena ve-sela zebo san|je vendrais pour ceci|5
 ena tsushima sivo|je te domine|5
 ena poko spozi na Galme, thoda, ena vi spozi na franzi|je parle un peu le galme, mais je parle bien le français|5`;
 export const TD:string[]=["Pronom","Particule","Verbe","Expression","Nom","Phrase"];
-export const TX:Record<string,string>={aleksi:"Expression",siyatura:"Nom",vi:"Adverbe",roloza:"Adverbe",eh:"Pronom",poniv:"Particule",delora:"Verbe",credo:"Verbe",kaska:"Nom",pajol:"Nom",visna:"Nom",nas:"Particule","namen kaska":"Expression",von:"Nom",vonona:"Nom",morila:"Nom",gabei:"Expression",san:"Pronom",lazo:"Adverbe",seran:"Pronom",sogno:"Nom",najai:"Pronom",sola:"Nom",pazo:"Nom",vayara:"Nom",vrayama:"Adverbe",nuna:"Adverbe",zolo:"Adjectif",poko:"Adverbe","sali-vuro":"Pronom",varo:"Adjectif",bela:"Adjectif",spezo:"Adjectif",deziro:"Adjectif",shapagna:"Adjectif",franzi:"Adjectif"};
+export const TX:Record<string,string>={langno:"Nom",anapi:"Nom",flezano:"Nom",aleksi:"Expression",siyatura:"Nom",vi:"Adverbe",roloza:"Adverbe",eh:"Pronom",poniv:"Particule",delora:"Verbe",credo:"Verbe",kaska:"Nom",pajol:"Nom",visna:"Nom",nas:"Particule","namen kaska":"Expression",von:"Nom",vonona:"Nom",morila:"Nom",gabei:"Expression",san:"Pronom",lazo:"Adverbe",seran:"Pronom",sogno:"Nom",najai:"Pronom",sola:"Nom",pazo:"Nom",vayara:"Nom",vrayama:"Adverbe",nuna:"Adverbe",zolo:"Adjectif",poko:"Adverbe","sali-vuro":"Pronom",varo:"Adjectif",bela:"Adjectif",spezo:"Adjectif",deziro:"Adjectif",shapagna:"Adjectif",franzi:"Adjectif"};
 export const TO:string[]=["Pronom","Verbe","Nom","Adjectif","Adverbe","Particule","Expression","Phrase"];
 export const TT:Record<string,string>={Pronom:"Pronoms",Verbe:"Verbes",Nom:"Noms",Adjectif:"Adjectifs",Adverbe:"Adverbes",Particule:"Particules et petits mots",Expression:"Expressions",Phrase:"Phrases"};
