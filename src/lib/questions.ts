@@ -1,6 +1,6 @@
 import {
   AFFIX_TOKENS, AFF_LABEL, C, CATS, Entry, GRAMMAR, ORAL, TEXTS, U, VPAIRS, analyze, clean, heads, punct,
-  sentences, textById, tokens, words,
+  sentences, textById, tokens, variantsOf, words,
 } from "@/data/galme";
 import type { Progress } from "./progress";
 import { norm, pick, shuf } from "./text";
