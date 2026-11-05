@@ -2,6 +2,10 @@
 import { useEffect, useRef, useState } from "react";
 import type { Question } from "@/lib/questions";
 import { norm, shuf } from "@/lib/text";
+import {
+  matchGalmeAnswer,
+  type GalmeAnswerMatch,
+} from "@/lib/galme-answer";
 
 export type Result = { ok: boolean; errs?: number[]; good?: string };
 type Q<T extends Question["type"]> = Extract<Question, { type: T }>;
@@ -68,44 +72,131 @@ function Choice({ q, onResult, keys }: Props<"choice">) {
 
 function Typed({ q, onResult }: Props<"typed">) {
   const [v, setV] = useState("");
-  const [phase, setPhase] = useState<"flash" | "in" | "done">(q.flash ? "flash" : "in");
+  const [phase, setPhase] = useState<
+    "flash" | "in" | "done"
+  >(q.flash ? "flash" : "in");
+
+  const [answerMatch, setAnswerMatch] =
+    useState<GalmeAnswerMatch>(null);
+
   const ref = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     if (phase === "flash" && q.flash) {
-      const t = setTimeout(() => setPhase("in"), q.flash.ms);
+      const t = setTimeout(
+        () => setPhase("in"),
+        q.flash.ms,
+      );
+
       return () => clearTimeout(t);
     }
-    if (phase === "in") ref.current?.focus();
+
+    if (phase === "in") {
+      ref.current?.focus();
+    }
   }, [phase, q]);
+
   const check = () => {
     if (phase !== "in") return;
+
+    const result = matchGalmeAnswer(
+      v,
+      q.answers,
+    );
+
+    setAnswerMatch(result);
     setPhase("done");
-    onResult({ ok: v.trim() !== "" && q.answers.some((a) => norm(a) === norm(v)) });
+
+    onResult({
+      ok: result !== null,
+    });
   };
+
   return (
     <>
       <p className="lab">{q.label}</p>
-      <div className={`big ${size(q.prompt)}`}>{q.prompt}</div>
+
+      <div className={`big ${size(q.prompt)}`}>
+        {q.prompt}
+      </div>
 
       {q.hint && (
         <p className="note">{q.hint}</p>
       )}
+
       {phase === "flash" && q.flash && (
         <div role="status">
-          <div className="flash" lang="x-galme">{q.flash.text}</div>
-          <p className="lab">Mémorise… le mot va disparaître.</p>
-          <button className="btn alt" onClick={() => setPhase("in")}>Je suis prêt</button>
+          <div
+            className="flash"
+            lang="x-galme"
+          >
+            {q.flash.text}
+          </div>
+
+          <p className="lab">
+            Mémorise… le mot va disparaître.
+          </p>
+
+          <button
+            className="btn alt"
+            onClick={() => setPhase("in")}
+          >
+            Je suis prêt
+          </button>
         </div>
       )}
+
       {phase !== "flash" && (
         <>
-          <input ref={ref} type="text" value={v} onChange={(e) => setV(e.target.value)} disabled={phase === "done"} autoComplete="off" autoCapitalize="off" spellCheck={false} aria-label="Ta réponse en galme" onKeyDown={(e) => { if (e.key === "Enter") check(); }} />
-          {phase === "in" && <button className="btn" onClick={check}>Valider</button>}
+          <input
+            ref={ref}
+            type="text"
+            value={v}
+            onChange={(e) =>
+              setV(e.target.value)
+            }
+            disabled={phase === "done"}
+            autoComplete="off"
+            autoCapitalize="off"
+            spellCheck={false}
+            aria-label="Ta réponse en galme"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                check();
+              }
+            }}
+          />
+
+          {phase === "in" && (
+            <button
+              className="btn"
+              onClick={check}
+            >
+              Valider
+            </button>
+          )}
+
+          {phase === "done" &&
+            answerMatch === "variant" && (
+              <p
+                className="fb ok"
+                role="status"
+              >
+                {q.sent
+                  ? "Forme du corpus"
+                  : "Forme du dictionnaire"}{" "}
+                :{" "}
+                <span lang="x-galme">
+                  {q.good}
+                </span>
+              </p>
+            )}
         </>
       )}
     </>
   );
 }
+
 
 function Order({ q, onResult }: Props<"order">) {
   const [ord] = useState(() => shuf(q.tokens.map((_, i) => i)));
@@ -242,25 +333,120 @@ function Gaps({ q, onResult }: Props<"gaps">) {
 }
 
 function Multi({ q, onResult }: Props<"multi">) {
-  const [vals, setVals] = useState<string[]>(() => q.rows.map(() => ""));
+  const [vals, setVals] = useState<string[]>(
+    () => q.rows.map(() => ""),
+  );
+
   const [done, setDone] = useState(false);
-  const res = q.rows.map((r, i) => norm(vals[i]) === norm(r.g));
+
+  const matches = q.rows.map((r, i) =>
+    matchGalmeAnswer(
+      vals[i],
+      [r.g],
+    ),
+  );
+
+  const res = matches.map(
+    (match) => match !== null,
+  );
+
   const check = () => {
     if (done) return;
+
     setDone(true);
-    onResult({ ok: res.filter(Boolean).length / q.rows.length >= 0.8 });
+
+    onResult({
+      ok:
+        res.filter(Boolean).length /
+          q.rows.length >=
+        0.8,
+    });
   };
+
   return (
     <>
       <p className="lab">{q.label}</p>
+
+      {q.hint && (
+        <p className="note">{q.hint}</p>
+      )}
+
       {q.rows.map((r, i) => (
-        <div key={i} style={{ marginTop: 12 }}>
-          <div className="note" style={{ color: "var(--tx)" }}>{i + 1}. {r.fr}</div>
-          <input type="text" value={vals[i]} disabled={done} aria-label={`Traduction de la ligne ${i + 1}`} autoComplete="off" autoCapitalize="off" spellCheck={false} onChange={(e) => setVals(vals.map((x, k) => (k === i ? e.target.value : x)))} style={{ borderColor: done ? (res[i] ? "var(--ok)" : "var(--ko)") : undefined }} />
-          {done && !res[i] && <div className="fb ko" style={{ margin: "2px 0 0", fontSize: 14 }}>→ {r.g}</div>}
+        <div
+          key={i}
+          style={{ marginTop: 12 }}
+        >
+          <div
+            className="note"
+            style={{ color: "var(--tx)" }}
+          >
+            {i + 1}. {r.fr}
+          </div>
+
+          <input
+            type="text"
+            value={vals[i]}
+            disabled={done}
+            aria-label={`Traduction de la ligne ${i + 1}`}
+            autoComplete="off"
+            autoCapitalize="off"
+            spellCheck={false}
+            onChange={(e) =>
+              setVals(
+                vals.map((x, k) =>
+                  k === i
+                    ? e.target.value
+                    : x,
+                ),
+              )
+            }
+            style={{
+              borderColor: done
+                ? res[i]
+                  ? "var(--ok)"
+                  : "var(--ko)"
+                : undefined,
+            }}
+          />
+
+          {done &&
+            matches[i] === "variant" && (
+              <div
+                className="fb ok"
+                style={{
+                  margin: "2px 0 0",
+                  fontSize: 14,
+                }}
+              >
+                Forme du corpus :{" "}
+                <span lang="x-galme">
+                  {r.g}
+                </span>
+              </div>
+            )}
+
+          {done && !res[i] && (
+            <div
+              className="fb ko"
+              style={{
+                margin: "2px 0 0",
+                fontSize: 14,
+              }}
+            >
+              → {r.g}
+            </div>
+          )}
         </div>
       ))}
-      {!done && <button className="btn" onClick={check}>Valider</button>}
+
+      {!done && (
+        <button
+          className="btn"
+          onClick={check}
+        >
+          Valider
+        </button>
+      )}
     </>
   );
 }
