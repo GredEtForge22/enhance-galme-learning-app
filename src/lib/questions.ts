@@ -4,6 +4,7 @@ import {
 } from "@/data/galme";
 import type { Progress } from "./progress";
 import { norm, pick, shuf } from "./text";
+import { ENDING_HINT } from "./galme-answer";
 
 export type Kind =
   | "qf" | "fq" | "type" | "build" | "cloze" | "vf" | "flip" | "match" | "dictee" | "gram" | "ending"
@@ -16,12 +17,24 @@ export type Part = { s: string } | { g: number; p: string };
 export type Question = Base &
   (
     | { type: "choice"; prompt: string; sub?: string; ctx?: string[]; opts: Opt[]; answer: string; good: string; note?: string }
-    | { type: "typed"; prompt: string; answers: string[]; good: string; flash?: { text: string; ms: number };hint?: string; }
+    | {
+      type: "typed";
+      prompt: string;
+      answers: string[];
+      good: string;
+      flash?: { text: string; ms: number };
+      hint?: string;
+    }
     | { type: "order"; prompt: string; tokens: string[]; good: string }
     | { type: "flip"; prompt: string; reveal: string }
     | { type: "match"; pairs: { id: number; g: string; f: string }[] }
     | { type: "gaps"; lines: { parts: Part[]; fr: string }[]; bank: string[]; answers: string[]; good: string }
-    | { type: "multi"; rows: { fr: string; g: string }[]; good: string }
+    | {
+      type: "multi";
+      rows: { fr: string; g: string }[];
+      good: string;
+      hint?: string;
+    }
     | { type: "intro"; prompt: string; reveal: string }
   );
 
@@ -163,7 +176,18 @@ function qTcloze(it: Item): Question {
 
 function qTtrans(it: Item): Question {
   const { t, L } = lines(it.textId);
-  return { type: "multi", label: `Traduis le texte entier · ${t.title}`, cat: "Traduction de textes", rows: L.map((l) => ({ fr: l.f, g: l.g })), good: L.map((l) => l.g).join(" / ") };
+
+  return {
+    type: "multi",
+    label: `Traduis le texte entier · ${t.title}`,
+    cat: "Traduction de textes",
+    rows: L.map((l) => ({
+      fr: l.f,
+      g: l.g,
+    })),
+    good: L.map((l) => l.g).join(" / "),
+    hint: ENDING_HINT,
+  };
 }
 
 export function makeQuestion(it: Item, P: Progress): Question | null {
@@ -177,25 +201,12 @@ export function makeQuestion(it: Item, P: Progress): Question | null {
     case "qf": return choiceWord(w, false, poolFor(w));
     case "fq": return choiceWord(w, true, poolFor(w));
     case "type": {
-      const forms = heads(w.g);
-      const variants = variantsOf(w);
-
-      // Les formes saisissables, plutôt que la notation explicative « mot (variante) ».
-      const answers = [...new Set([...forms, ...variants])];
-      const primary = forms[0] ?? w.g;
-      const alternatives = answers.filter((a) => norm(a) !== norm(primary));
-
-      const hint = sent
-        ? "Pour cet exercice, les variantes des mots dans une phrase ne sont pas encore reconnues automatiquement."
-        : [
-          VARIANT_EXPLANATION,
-
-          alternatives.length > 0
-            ? `Pour ce mot, ces autres formes sont aussi comptées comme justes : ${alternatives.join(" / ")}.`
-            : "Pour ce mot, aucune autre forme n’est répertoriée dans l’application.",
-
-            "Une terminaison non répertoriée n’est pas automatiquement acceptée.",
-          ].join(" ");
+      const answers = [
+        ...new Set([
+          ...heads(w.g),
+          ...variantsOf(w),
+        ]),
+      ];
 
       return {
         type: "typed",
@@ -206,14 +217,38 @@ export function makeQuestion(it: Item, P: Progress): Question | null {
         wordId: w.id,
         cat: w.t,
         sent,
-        hint,
+        hint: ENDING_HINT,
       };
     }
-    case "dictee":
+    case "dictee": {
+      const answers = [
+        ...new Set([
+          ...heads(w.g),
+          ...variantsOf(w),
+        ]),
+      ];
+
       return {
-        type: "typed", label: "Dictée : mémorise, puis écris en galme", prompt: w.f, answers: [w.g, ...heads(w.g)], good: w.g, wordId: w.id, cat: "Dictée", sent,
-        flash: { text: w.g, ms: sent ? Math.min(9000, 2500 + tokens(w.g).length * 700) : 2500 },
+        type: "typed",
+        label: "Dictée : mémorise, puis écris en galme",
+        prompt: w.f,
+        answers,
+        good: w.g,
+        wordId: w.id,
+        cat: "Dictée",
+        sent,
+        hint: ENDING_HINT,
+        flash: {
+          text: w.g,
+          ms: sent
+            ? Math.min(
+                9000,
+                2500 + tokens(w.g).length * 700,
+              )
+            : 2500,
+        },
       };
+    }
     case "build": {
       const s = sent ? w : pick(sentences);
       return { type: "order", label: "Remets la phrase en galme dans l'ordre", prompt: s.f, tokens: tokens(s.g), good: s.g, wordId: s.id, cat: s.t, sent: true };
