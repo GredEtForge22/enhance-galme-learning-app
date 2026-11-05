@@ -95,19 +95,24 @@ export const VARIANTS: Record<string, string[]> = {
   "-vo": ["ve-"],
 };
 
-
 export function variantsOf(e: Entry): string[] {
   if (e.u === 5) return [];
 
-  return [
-    ...new Set(
-      heads(e.g)
-        .flatMap((h) => VARIANTS[h.toLowerCase()] ?? [])
-        .map((v) => v.replace(/\s*\([^)]*\)\s*$/, ""))
-    ),
-  ];
-}
+  const out = new Set<string>();
 
+  for (const h of heads(e.g)) {
+    for (const variant of VARIANTS[h.toLowerCase()] ?? []) {
+      // Retire les précisions comme « (à l'oral) »
+      const cleanVariant = variant
+        .replace(/\s*\([^)]*\)\s*$/, "")
+        .trim();
+
+      if (cleanVariant) out.add(cleanVariant);
+    }
+  }
+
+  return [...out];
+}
 
 /** Formes déjà répertoriées : variantes déclarées + formes rencontrées dans les phrases du corpus. */
 export function formsOf(e: Entry): string[] {
