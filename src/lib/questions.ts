@@ -185,10 +185,17 @@ export function makeQuestion(it: Item, P: Progress): Question | null {
       const primary = forms[0] ?? w.g;
       const alternatives = answers.filter((a) => norm(a) !== norm(primary));
 
-      const hint =
-        !sent && alternatives.length > 0
-          ? `Autres formes acceptées : ${alternatives.join(" / ")}. ${VARIANT_EXPLANATION} La forme de base et ces variantes comptent comme justes ; une autre forme non répertoriée ne l’est pas automatiquement.`
-          : undefined;
+      const hint = sent
+        ? "Pour cet exercice, les variantes des mots dans une phrase ne sont pas encore reconnues automatiquement."
+        : [
+          VARIANT_EXPLANATION,
+
+          alternatives.length > 0
+            ? `Pour ce mot, ces autres formes sont aussi comptées comme justes : ${alternatives.join(" / ")}.`
+            : "Pour ce mot, aucune autre forme n’est répertoriée dans l’application.",
+
+            "Une terminaison non répertoriée n’est pas automatiquement acceptée.",
+          ].join(" ");
 
       return {
         type: "typed",
