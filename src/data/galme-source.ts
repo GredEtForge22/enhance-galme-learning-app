@@ -286,8 +286,11 @@ josu fu-funizi varo fozel|nous deviendrons un grand peuple|5
 ena pre-saroke, ena pre-agño, ena pre-tsushima|Veni Vidi Vici|5
 ena malo o ena ilie|je pense donc je suis|5
 siva kanora siva|connais toi toi-même|5
-amora agйo-sha|l'amour rend aveugle|5
-ena sagйe o ena sagйe-sha|je sais que je ne sais rien|5
+anapi agйo-sha|l'amour rend aveugle|5
+ñameñ ña dia|Carpe Diem|5
+ena ilie-ko odia ena ilie-sha-ko ?
+ña pazo ilie o vosu|la paix est avec vous|5
+ena sagйe bi ena sagйe-sha|je sais que je ne sais rien|5
 ena poko spozi йa Galme, thoda, ena vi spozi йa fraйzi|je parle un peu le galme, mais je parle bien le français|5`;
 export const TD:string[]=["Pronom","Particule","Verbe","Expression","Nom","Phrase"];
 export const TX:Record<string,string>={kilderic:"Adjectif",braйdol:"Nom",langйo:"Nom",anapi:"Nom",flezano:"Nom",aleksi:"Expression",siyatura:"Nom",vi:"Adverbe",roloza:"Adverbe",eh:"Pronom",poniv:"Particule",delora:"Verbe",credo:"Verbe",kaska:"Nom",pajol:"Nom",visйa:"Nom",йas:"Particule","йameй kaska":"Expression",voй:"Nom",voйona:"Nom",morila:"Nom",gabei:"Expression",saй:"Pronom",lazo:"Adverbe",seran:"Pronom",sogno:"Nom",йajai:"Pronom",sola:"Nom",pazo:"Nom",vayara:"Nom",vrayama:"Adverbe",nuna:"Adverbe",zolo:"Adjectif",poko:"Adverbe","sali-vuro":"Pronom",varo:"Adjectif",bela:"Adjectif",spezo:"Adjectif",deziro:"Adjectif",shapagйa:"Adjectif",fraйzi:"Adjectif"};
