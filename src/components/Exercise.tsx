@@ -86,6 +86,10 @@ function Typed({ q, onResult }: Props<"typed">) {
     <>
       <p className="lab">{q.label}</p>
       <div className={`big ${size(q.prompt)}`}>{q.prompt}</div>
+
+      {phase === "in" && q.hint && (
+        <p className="note">{q.hint}</p>
+      )}
       {phase === "flash" && q.flash && (
         <div role="status">
           <div className="flash" lang="x-galme">{q.flash.text}</div>
