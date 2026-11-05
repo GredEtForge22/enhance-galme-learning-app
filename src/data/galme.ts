@@ -95,6 +95,20 @@ export const VARIANTS: Record<string, string[]> = {
   "-vo": ["ve-"],
 };
 
+
+export function variantsOf(e: Entry): string[] {
+  if (e.u === 5) return [];
+
+  return [
+    ...new Set(
+      heads(e.g)
+        .flatMap((h) => VARIANTS[h.toLowerCase()] ?? [])
+        .map((v) => v.replace(/\s*\([^)]*\)\s*$/, ""))
+    ),
+  ];
+}
+
+
 /** Formes déjà répertoriées : variantes déclarées + formes rencontrées dans les phrases du corpus. */
 export function formsOf(e: Entry): string[] {
   if (e.u === 5) return [];
