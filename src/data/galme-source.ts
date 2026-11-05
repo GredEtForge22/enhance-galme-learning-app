@@ -213,6 +213,76 @@ narai pre-daroke sivo mona, thodo siva pre-vramdra sha|il t’a donné ton argen
 dia zolo fu-sagйe|dieu seul saura|5
 ena ve-sela zebo saй|je vendrais pour ceci|5
 ena tsushima sivo|je te domine|5
+zhoyama, ena kala Sacha|bonjour, je m'appelle Sacha|5
+selami, lano ami|salut, mon ami|5
+chi, siva ilie kilderic|merci, tu es vaillant(e)|5
+nasamora, lano fela|bonne nuit, mon chat|5
+siva kala-ko eh ?|comment t'appelles-tu ?|5
+narai kala-ko eh ?|comment s'appelle-t-il / elle ?|5
+ena yusso Galme|j'apprends le galme|5
+siva yusso-ko Galme ?|apprends-tu le galme ?|5
+josu yusso saй langйo|nous apprenons cette langue|5
+lorai spozi-sha Galme|ils / elles ne parlent pas galme|5
+ena spozi Galme, thoda poko|je parle galme, mais un peu|5
+siva spozi vi Galme|tu parles bien galme|5
+narai spozi bela bela|il / elle parle très bien|5
+ena kanora siva, thoda poko|je te comprends, mais un peu|5
+vosu kanora-sha ena|vous ne me comprenez pas|5
+ena lagйa-sha siva|je ne t'entends pas|5
+siva lagйa-ko ena ?|m'entends-tu ?|5
+ena agйo sola, siva agйo luna|je vois le soleil, tu vois la lune|5
+sola ilie varo|le soleil est grand|5
+luna ilie bela bela|la lune est très belle|5
+saй selйar ilie varo|ce pays est grand|5
+lano selйar ilie bela|mon pays est beau|5
+rae fela ilie zolo|son chat est seul|5
+lano bambiйo dormara|mon bébé se repose|5
+rae bambiйo ilie bela bela|son bébé est très beau|5
+fela agйo bambiйo|le chat voit le bébé|5
+ena amora lano fozel|j'aime mon peuple|5
+josu amora lano selйar|nous aimons mon pays|5
+siva amora-ko lano fela ?|aimes-tu mon chat ?|5
+narai amora-sha mona|il / elle n'aime pas l'argent|5
+ena lio pazo, thoda lio-sha mona|j'ai la paix, mais je n'ai pas d'argent|5
+siva lio-ko ami ?|as-tu un ami ?|5
+josu lio varo kora|nous avons un grand cœur|5
+ena manka siva|tu me manques|5
+siva manka-ko ena ?|est-ce que je te manque ?|5
+ena delora saй|je veux cela|5
+siva delora-ko pazo ?|veux-tu la paix ?|5
+josu delora pazo, thoda lorai delora mona|nous voulons la paix, mais ils / elles veulent l'argent|5
+ena credo siva, thoda narai credo-sha|je te crois, mais il / elle ne croit pas|5
+vosu credo-ko ena ?|me croyez-vous ?|5
+ena loroke dia|je travaille aujourd'hui|5
+siva loroke-ko dia ?|travailles-tu aujourd'hui ?|5
+narai loroke-sha, narai dormara|il / elle ne travaille pas, il / elle se repose|5
+josu pre-loroke, dia josu dormara|nous avons travaillé, aujourd'hui nous nous reposons|5
+ena pre-yusso Galme|j'ai appris le galme|5
+siva pre-spozi-ko Galme ?|as-tu parlé galme ?|5
+lorai pre-saroke|ils / elles sont venu(e)s|5
+narai pre-maha fela|il / elle a acheté un chat|5
+josu pre-agйo luna|nous avons vu la lune|5
+vosu pre-kanora-ko saй ?|avez-vous compris cela ?|5
+ena fu-yusso saй langйo|j'apprendrai cette langue|5
+siva fu-spozi vi Galme|tu parleras bien galme|5
+narai fu-maha mona|il / elle achètera de l'argent|5
+josu fu-agйo sola|nous verrons le soleil|5
+lorai fu-saroke-ko ?|viendront-ils / elles ?|5
+ena fu-daroke siva lano kora|je te donnerai mon cœur|5
+ena ve-saroke, thoda ena loroke|je viendrais, mais je travaille|5
+siva ve-kanora saй|tu comprendrais cela|5
+narai saroke-vo|il / elle viendrait|5
+josu maha-vo fela|nous achèterions un chat|5
+ena ve-daroke siva mona|je te donnerais de l'argent|5
+siva ve-amora-ko ena ?|m'aimerais-tu ?|5
+ena hesidare, thoda siva hesidare-sha|j'hésite, mais tu n'hésites pas|5
+ena funizi ami|je deviens un ami|5
+narai funiza bela|il / elle devient beau / belle|5
+lorai funizo fozel|ils / elles deviennent un peuple|5
+siva funizu-ko kilderic ?|deviens-tu vaillant(e) ?|5
+ena pre-funizi zolo|je suis devenu(e) seul(e)|5
+josu fu-funizi varo fozel|nous deviendrons un grand peuple|5
+vayara sola pazo, lano ami|au revoir, mon ami|5
 ena poko spozi йa Galme, thoda, ena vi spozi йa fraйzi|je parle un peu le galme, mais je parle bien le français|5`;
 export const TD:string[]=["Pronom","Particule","Verbe","Expression","Nom","Phrase"];
 export const TX:Record<string,string>={kilderic:"Adjectif",braйdol:"Nom",langйo:"Nom",anapi:"Nom",flezano:"Nom",aleksi:"Expression",siyatura:"Nom",vi:"Adverbe",roloza:"Adverbe",eh:"Pronom",poniv:"Particule",delora:"Verbe",credo:"Verbe",kaska:"Nom",pajol:"Nom",visйa:"Nom",йas:"Particule","йameй kaska":"Expression",voй:"Nom",voйona:"Nom",morila:"Nom",gabei:"Expression",saй:"Pronom",lazo:"Adverbe",seran:"Pronom",sogno:"Nom",йajai:"Pronom",sola:"Nom",pazo:"Nom",vayara:"Nom",vrayama:"Adverbe",nuna:"Adverbe",zolo:"Adjectif",poko:"Adverbe","sali-vuro":"Pronom",varo:"Adjectif",bela:"Adjectif",spezo:"Adjectif",deziro:"Adjectif",shapagйa:"Adjectif",fraйzi:"Adjectif"};
