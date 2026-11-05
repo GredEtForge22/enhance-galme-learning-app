@@ -175,7 +175,22 @@ export function makeQuestion(it: Item, P: Progress): Question | null {
     case "qf": return choiceWord(w, false, poolFor(w));
     case "fq": return choiceWord(w, true, poolFor(w));
     case "type":
-      return { type: "typed", label: "Écris en galme", prompt: w.f, answers: [w.g, ...heads(w.g)], good: w.g, wordId: w.id, cat: w.t, sent };
+      return {
+        type: "typed",
+        label: "Écris en galme",
+        prompt: w.f,
+        answers: [
+          ...new Set([
+            w.g,
+            ...heads(w.g),
+            ...variantsOf(w),
+          ]),
+        ],
+        good: w.g,
+        wordId: w.id,
+        cat: w.t,
+        sent,
+      };
     case "dictee":
       return {
         type: "typed", label: "Dictée : mémorise, puis écris en galme", prompt: w.f, answers: [w.g, ...heads(w.g)], good: w.g, wordId: w.id, cat: "Dictée", sent,
