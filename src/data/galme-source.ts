@@ -288,7 +288,7 @@ ena malo o ena ilie|je pense donc je suis|5
 siva kanora siva|connais toi toi-même|5
 anapi agйo-sha|l'amour rend aveugle|5
 ñameñ ña dia|Carpe Diem|5
-ena ilie-ko odia ena ilie-sha-ko ?
+ilie-ko odia ilie-sha-ko ?|être ou ne pas être|5
 ña pazo ilie o vosu|la paix est avec vous|5
 ena sagйe bi ena sagйe-sha|je sais que je ne sais rien|5
 ena poko spozi йa Galme, thoda, ena vi spozi йa fraйzi|je parle un peu le galme, mais je parle bien le français|5`;
