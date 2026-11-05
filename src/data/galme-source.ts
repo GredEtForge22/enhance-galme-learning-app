@@ -153,20 +153,20 @@ ena spozi vi|je parle bien|5
 ena ilie sogno|je suis une personne|5
 siva ilie ami|tu es un ami|5
 narai ilie kilderic|il / elle est vaillant(e)|5
-josu ilie fozel|nous sommes le peuple|5
+josu ilie йa fozel|nous sommes le peuple|5
 vosu ilie bela|vous êtes beaux / belles|5
 lorai ilie zolo|ils / elles sont seuls / seules|5
 ena lio ami|j'ai un ami|5
 siva lio bela kora|tu as un beau cœur|5
 narai lio mona|il / elle a de l'argent|5
-josu lio pazo|nous avons la paix|5
-ena agйo luna|je vois la lune|5
-siva agйo sola|tu vois le soleil|5
-fela agйo luna|le chat voit la lune|5
-bambiйo dormara|le bébé se repose|5
+josu lio йa pazo|nous avons la paix|5
+ena agйo йa luna|je vois la lune|5
+siva agйo йa sola|tu vois le soleil|5
+fela agйo йa luna|le chat voit la lune|5
+йa bambiйo dormara|le bébé se repose|5
 josu lagйa siva|nous t'entendons|5
 vosu kanora ena|vous me comprenez|5
-lorai spozi йa fraйzi|ils / elles parlent français|5
+lorai spozi йa fraйzi|ils / elles parlent le français|5
 ena yusso langйo|j'apprends une langue|5
 narai loroke|il / elle travaille|5
 josu dormara|nous nous reposons|5
@@ -177,13 +177,13 @@ vosu kanora-ko saй ?|comprenez-vous cela ?|5
 narai lio-ko mona ?|a-t-il ou a-t-elle de l'argent ?|5
 siva delora eh-ko ?|que veux-tu ?|5
 vosu varoka-ko ?|allez-vous ?|5
-ena pre-agйo luna|j'ai vu la lune|5
+ena pre-agйo йa luna|j'ai vu la lune|5
 siva pre-saroke|tu es venu(e)|5
 ena pre-daroke siva mona|je t'ai donné de l'argent|5
 josu fu-saroke|nous viendrons|5
 vosu fu-sagйe|vous saurez|5
 lorai fu-kanora saй|ils / elles comprendront cela|5
-ena fu-spozi йa fraйzi|je parlerai français|5
+ena fu-spozi йa fraйzi|je parlerai le français|5
 narai fu-loroke|il / elle travaillera|5
 ena ve-maha saй|j'achèterais cela|5
 siva ve-saroke|tu viendrais|5
@@ -194,8 +194,8 @@ narai credo-sha ena|il / elle ne me croit pas|5
 josu hesidare-sha|nous n'hésitons pas|5
 lano fela ilie bela|mon chat est beau|5
 rae ami ilie kilderic|son ami est vaillant|5
-bela luna ilie spezo|la belle lune est spéciale|5
-varo selйar ilie bela|le grand pays est beau|5
+йa bela luna ilie spezo|la belle lune est spéciale|5
+йa varo selйar ilie bela|le grand pays est beau|5
 saй fela ilie bela|ce chat est beau|5
 ena amora lano fela|j'aime mon chat|5
 ena funizi kilderic|je deviens vaillant(e)|5
@@ -214,33 +214,33 @@ dia zolo fu-sagйe|dieu seul saura|5
 ena ve-sela zebo saй|je vendrais pour ceci|5
 ena tsushima sivo|je te domine|5
 zhoyama, ena kala Sacha|bonjour, je m'appelle Sacha|5
-selami, lano ami|salut, mon ami|5
+zhoyama, lano ami|salut, mon ami|5
 chi, siva ilie kilderic|merci, tu es vaillant(e)|5
-nasamora, lano fela|bonne nuit, mon chat|5
+vayara solo pazo, lano fela|bonne nuit, mon chat|5
 siva kala-ko eh ?|comment t'appelles-tu ?|5
 narai kala-ko eh ?|comment s'appelle-t-il / elle ?|5
-ena yusso Galme|j'apprends le galme|5
-siva yusso-ko Galme ?|apprends-tu le galme ?|5
+ena yusso йa Galme|j'apprends le galme|5
+siva yusso-ko йa Galme ?|apprends-tu le galme ?|5
 josu yusso saй langйo|nous apprenons cette langue|5
-lorai spozi-sha Galme|ils / elles ne parlent pas galme|5
-ena spozi Galme, thoda poko|je parle galme, mais un peu|5
-siva spozi vi Galme|tu parles bien galme|5
-narai spozi bela bela|il / elle parle très bien|5
+lorai spozi-sha йa Galme|ils / elles ne parlent pas galme|5
+ena spozi йa Galme, thoda poko|je parle galme, mais un peu|5
+siva spozi vi йa Galme|tu parles bien galme|5
+narai spozi vi vi|il / elle parle très bien|5
 ena kanora siva, thoda poko|je te comprends, mais un peu|5
 vosu kanora-sha ena|vous ne me comprenez pas|5
 ena lagйa-sha siva|je ne t'entends pas|5
 siva lagйa-ko ena ?|m'entends-tu ?|5
-ena agйo sola, siva agйo luna|je vois le soleil, tu vois la lune|5
-sola ilie varo|le soleil est grand|5
-luna ilie bela bela|la lune est très belle|5
+ena agйo йa sola, siva agйo йa luna|je vois le soleil, tu vois la lune|5
+йa sola ilie varo|le soleil est grand|5
+йa luna ilie bela bela|la lune est très belle|5
 saй selйar ilie varo|ce pays est grand|5
 lano selйar ilie bela|mon pays est beau|5
 rae fela ilie zolo|son chat est seul|5
 lano bambiйo dormara|mon bébé se repose|5
 rae bambiйo ilie bela bela|son bébé est très beau|5
-fela agйo bambiйo|le chat voit le bébé|5
+fela agйo йa bambiйo|le chat voit le bébé|5
 ena amora lano fozel|j'aime mon peuple|5
-josu amora lano selйar|nous aimons mon pays|5
+josu amora lanoslo selйar|nous aimons notre pays|5
 siva amora-ko lano fela ?|aimes-tu mon chat ?|5
 narai amora-sha mona|il / elle n'aime pas l'argent|5
 ena lio pazo, thoda lio-sha mona|j'ai la paix, mais je n'ai pas d'argent|5
@@ -253,20 +253,20 @@ siva delora-ko pazo ?|veux-tu la paix ?|5
 josu delora pazo, thoda lorai delora mona|nous voulons la paix, mais ils / elles veulent l'argent|5
 ena credo siva, thoda narai credo-sha|je te crois, mais il / elle ne croit pas|5
 vosu credo-ko ena ?|me croyez-vous ?|5
-ena loroke dia|je travaille aujourd'hui|5
-siva loroke-ko dia ?|travailles-tu aujourd'hui ?|5
+ena loroke йuna|je travaille maintenant|5
+siva loroke-ko йuna ?|travailles-tu maintenant ?|5
 narai loroke-sha, narai dormara|il / elle ne travaille pas, il / elle se repose|5
-josu pre-loroke, dia josu dormara|nous avons travaillé, aujourd'hui nous nous reposons|5
-ena pre-yusso Galme|j'ai appris le galme|5
-siva pre-spozi-ko Galme ?|as-tu parlé galme ?|5
+josu pre-loroke, йuna josu dormara|nous avons travaillé, maintenant nous nous reposons|5
+ena pre-yusso йa Galme|j'ai appris le galme|5
+siva pre-spozi-ko йa Galme ?|as-tu parlé galme ?|5
 lorai pre-saroke|ils / elles sont venu(e)s|5
 narai pre-maha fela|il / elle a acheté un chat|5
-josu pre-agйo luna|nous avons vu la lune|5
+josu pre-agйo йa luna|nous avons vu la lune|5
 vosu pre-kanora-ko saй ?|avez-vous compris cela ?|5
 ena fu-yusso saй langйo|j'apprendrai cette langue|5
-siva fu-spozi vi Galme|tu parleras bien galme|5
+siva fu-spozi vi йa Galme|tu parleras bien galme|5
 narai fu-maha mona|il / elle achètera de l'argent|5
-josu fu-agйo sola|nous verrons le soleil|5
+josu fu-agйo йa sola|nous verrons le soleil|5
 lorai fu-saroke-ko ?|viendront-ils / elles ?|5
 ena fu-daroke siva lano kora|je te donnerai mon cœur|5
 ena ve-saroke, thoda ena loroke|je viendrais, mais je travaille|5
@@ -282,7 +282,7 @@ lorai funizo fozel|ils / elles deviennent un peuple|5
 siva funizu-ko kilderic ?|deviens-tu vaillant(e) ?|5
 ena pre-funizi zolo|je suis devenu(e) seul(e)|5
 josu fu-funizi varo fozel|nous deviendrons un grand peuple|5
-vayara sola pazo, lano ami|au revoir, mon ami|5
+йasamora, lano ami|au revoir, mon ami|5
 ena poko spozi йa Galme, thoda, ena vi spozi йa fraйzi|je parle un peu le galme, mais je parle bien le français|5`;
 export const TD:string[]=["Pronom","Particule","Verbe","Expression","Nom","Phrase"];
 export const TX:Record<string,string>={kilderic:"Adjectif",braйdol:"Nom",langйo:"Nom",anapi:"Nom",flezano:"Nom",aleksi:"Expression",siyatura:"Nom",vi:"Adverbe",roloza:"Adverbe",eh:"Pronom",poniv:"Particule",delora:"Verbe",credo:"Verbe",kaska:"Nom",pajol:"Nom",visйa:"Nom",йas:"Particule","йameй kaska":"Expression",voй:"Nom",voйona:"Nom",morila:"Nom",gabei:"Expression",saй:"Pronom",lazo:"Adverbe",seran:"Pronom",sogno:"Nom",йajai:"Pronom",sola:"Nom",pazo:"Nom",vayara:"Nom",vrayama:"Adverbe",nuna:"Adverbe",zolo:"Adjectif",poko:"Adverbe","sali-vuro":"Pronom",varo:"Adjectif",bela:"Adjectif",spezo:"Adjectif",deziro:"Adjectif",shapagйa:"Adjectif",fraйzi:"Adjectif"};
