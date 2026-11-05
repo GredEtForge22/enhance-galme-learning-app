@@ -150,6 +150,58 @@ siva kora ilie bela bela|son cœur est magnifique|5
 ena kala Sacha|je m’appelle Sacha|5
 siva kanora-ko ?|comprends-tu ?|5
 ena spozi vi|je parle bien|5
+ena ilie sogno|je suis une personne|5
+siva ilie ami|tu es un ami|5
+narai ilie kilderic|il / elle est vaillant(e)|5
+josu ilie fozel|nous sommes le peuple|5
+vosu ilie bela|vous êtes beaux / belles|5
+lorai ilie zolo|ils / elles sont seuls / seules|5
+ena lio ami|j'ai un ami|5
+siva lio bela kora|tu as un beau cœur|5
+narai lio mona|il / elle a de l'argent|5
+josu lio pazo|nous avons la paix|5
+ena agйo luna|je vois la lune|5
+siva agйo sola|tu vois le soleil|5
+fela agйo luna|le chat voit la lune|5
+bambiйo dormara|le bébé se repose|5
+josu lagйa siva|nous t'entendons|5
+vosu kanora ena|vous me comprenez|5
+lorai spozi йa fraйzi|ils / elles parlent français|5
+ena yusso langйo|j'apprends une langue|5
+narai loroke|il / elle travaille|5
+josu dormara|nous nous reposons|5
+ena delora pazo|je veux la paix|5
+siva credo ena|tu me crois|5
+siva agйo-ko luna ?|vois-tu la lune ?|5
+vosu kanora-ko saй ?|comprenez-vous cela ?|5
+narai lio-ko mona ?|a-t-il ou a-t-elle de l'argent ?|5
+siva delora eh-ko ?|que veux-tu ?|5
+vosu varoka-ko ?|allez-vous ?|5
+ena pre-agйo luna|j'ai vu la lune|5
+siva pre-saroke|tu es venu(e)|5
+ena pre-daroke siva mona|je t'ai donné de l'argent|5
+josu fu-saroke|nous viendrons|5
+vosu fu-sagйe|vous saurez|5
+lorai fu-kanora saй|ils / elles comprendront cela|5
+ena fu-spozi йa fraйzi|je parlerai français|5
+narai fu-loroke|il / elle travaillera|5
+ena ve-maha saй|j'achèterais cela|5
+siva ve-saroke|tu viendrais|5
+josu ve-dormara|nous nous reposerions|5
+ena kanora-sha siva|je ne te comprends pas|5
+siva delora-sha mona|tu ne veux pas d'argent|5
+narai credo-sha ena|il / elle ne me croit pas|5
+josu hesidare-sha|nous n'hésitons pas|5
+lano fela ilie bela|mon chat est beau|5
+rae ami ilie kilderic|son ami est vaillant|5
+bela luna ilie spezo|la belle lune est spéciale|5
+varo selйar ilie bela|le grand pays est beau|5
+saй fela ilie bela|ce chat est beau|5
+ena amora lano fela|j'aime mon chat|5
+ena funizi kilderic|je deviens vaillant(e)|5
+siva funiza kilderic|tu deviens vaillant(e)|5
+narai funizo zolo|il / elle devient seul(e)|5
+josu funizu ami|nous devenons amis|5
 vosu spozi-ko ?|vous parlez ?|5
 siva amora eh-ko ?|tu aimes quoi ?|5
 Ena yusso o kenara sivo йas soй langйo|J'apprend à te comprendre dans ta langue|5
