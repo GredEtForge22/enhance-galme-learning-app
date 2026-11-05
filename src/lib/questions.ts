@@ -16,7 +16,7 @@ export type Part = { s: string } | { g: number; p: string };
 export type Question = Base &
   (
     | { type: "choice"; prompt: string; sub?: string; ctx?: string[]; opts: Opt[]; answer: string; good: string; note?: string }
-    | { type: "typed"; prompt: string; answers: string[]; good: string; flash?: { text: string; ms: number } }
+    | { type: "typed"; prompt: string; answers: string[]; good: string; flash?: { text: string; ms: number };hint?: string; }
     | { type: "order"; prompt: string; tokens: string[]; good: string }
     | { type: "flip"; prompt: string; reveal: string }
     | { type: "match"; pairs: { id: number; g: string; f: string }[] }
@@ -34,6 +34,8 @@ export function kindFor(c: Entry, b: number): Kind {
 }
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const VARIANT_EXPLANATION =
+  "Le corpus indique que certaines terminaisons varient sans changer le sens, pour que le mot sonne mieux à l’oreille (ex. funizi / funiza / funizo / funizu). Il répertorie aussi des formes orales.";
 
 function choiceWord(c: Entry, dir: boolean, pool: Entry[], label?: string): ChoiceQ {
   const seen = new Set([dir ? c.g : c.f]);
@@ -66,7 +68,7 @@ function qEnding(): Question {
     const pool = words.map((w) => heads(w.g)[0]).filter((h) => !forbid.has(h.toLowerCase()) && h.length > 2 && !/[ -]/.test(h));
     const ds = shuf([...new Set(pool)]).slice(0, 3);
     const q = textChoice(`Quelle forme a le même sens que « ${a} » ?`, undefined, "Terminaisons et variantes", "Terminaisons", b, ds);
-    return { ...q, good: b + (ORAL.has(b) ? " (à l'oral)" : ""), note: "Un mot peut changer de terminaison sans changer de sens." };
+    return { ...q, good: b + (ORAL.has(b) ? " (à l'oral)" : ""), note: VARIANT_EXPLANATION };
   }
   const x = pick(suf);
   const labels = [...new Set(Object.values(AFF_LABEL))];
@@ -174,23 +176,32 @@ export function makeQuestion(it: Item, P: Progress): Question | null {
   switch (k) {
     case "qf": return choiceWord(w, false, poolFor(w));
     case "fq": return choiceWord(w, true, poolFor(w));
-    case "type":
+    case "type": {
+      const forms = heads(w.g);
+      const variants = variantsOf(w);
+
+      // Les formes saisissables, plutôt que la notation explicative « mot (variante) ».
+      const answers = [...new Set([...forms, ...variants])];
+      const primary = forms[0] ?? w.g;
+      const alternatives = answers.filter((a) => norm(a) !== norm(primary));
+
+      const hint =
+        !sent && alternatives.length > 0
+          ? `Autres formes acceptées : ${alternatives.join(" / ")}. ${VARIANT_EXPLANATION} La forme de base et ces variantes comptent comme justes ; une autre forme non répertoriée ne l’est pas automatiquement.`
+          : undefined;
+
       return {
         type: "typed",
         label: "Écris en galme",
         prompt: w.f,
-        answers: [
-          ...new Set([
-            w.g,
-            ...heads(w.g),
-            ...variantsOf(w),
-          ]),
-        ],
+        answers,
         good: w.g,
         wordId: w.id,
         cat: w.t,
         sent,
+        hint,
       };
+    }
     case "dictee":
       return {
         type: "typed", label: "Dictée : mémorise, puis écris en galme", prompt: w.f, answers: [w.g, ...heads(w.g)], good: w.g, wordId: w.id, cat: "Dictée", sent,
