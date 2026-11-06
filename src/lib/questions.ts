@@ -5,6 +5,7 @@ import {
 import type { Progress } from "./progress";
 import { norm, pick, shuf } from "./text";
 import { ENDING_HINT } from "./galme-answer";
+import { ORAL_EXERCISES } from "@/data/oral";
 
 export type Kind =
   | "qf" | "fq" | "type" | "build" | "cloze" | "vf" | "flip" | "match" | "dictee" | "gram" | "ending"
