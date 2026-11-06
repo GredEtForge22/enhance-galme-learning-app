@@ -35,11 +35,9 @@ const exos: Mode[] = [
   { href: `/jouer?mode=compr-orale${B}`, title: "Compréhension orale", desc: "Écoute un extrait et réponds aux questions" },
   { href: "/oral/parler", title: "Expression orale", desc: "Enregistre ta réponse puis réécoute-la" },
 ];
-const KS = Object.entries(KIND_LABEL)
-  .filter(([k]) =>
-    !["match", "compr", "compr-orale", "tcloze", "ttrans", "flip"].includes(k)
-  )
-  as [Kind, string][];
+const KS = Object.entries(KIND_LABEL).filter(
+  ([k]) => !["match", "compr", "compr-orale", "tcloze", "ttrans", "flip"].includes(k),
+) as [Kind, string][];
 
 export default function Entrainer() {
   const { P } = useStore();
