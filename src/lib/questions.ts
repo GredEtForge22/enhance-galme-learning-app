@@ -9,15 +9,34 @@ import { ORAL_EXERCISES } from "@/data/oral";
 
 export type Kind =
   | "qf" | "fq" | "type" | "build" | "cloze" | "vf" | "flip" | "match" | "dictee" | "gram" | "ending"
-  | "particle" | "cat" | "correct" | "compr" | "tcloze" | "ttrans";
+  | "particle" | "cat" | "correct" | "compr" | "tcloze" | "ttrans" | "compr-orale";
 
-export type Item = { k?: Kind; id?: number; textId?: string; gi?: number; intro?: boolean; w?: boolean; n?: number };
+export type Item = {
+  k?: Kind;
+  id?: number;
+  textId?: string;
+  gi?: number;
+  intro?: boolean;
+  w?: boolean;
+  n?: number;
+  oralId?: string;
+};
 export type Opt = { key: string; text: string };
 type Base = { label: string; cat: string; wordId?: number; sent?: boolean };
 export type Part = { s: string } | { g: number; p: string };
 export type Question = Base &
   (
-    | { type: "choice"; prompt: string; sub?: string; ctx?: string[]; opts: Opt[]; answer: string; good: string; note?: string }
+    | {
+      type: "choice";
+      prompt: string;
+      sub?: string;
+      ctx?: string[];
+      audioSrc?: string;
+      opts: Opt[];
+      answer: string;
+      good: string;
+      note?: string;
+    }
     | {
       type: "typed";
       prompt: string;
@@ -151,6 +170,41 @@ function qCompr(it: Item): Question {
   const pad = C.filter((c) => c.u === e.u && !L.some((l) => l.id === c.id));
   const q = choiceWord(e, Math.random() < 0.5, [...L, ...shuf(pad)], `Compréhension écrite · ${t.title}`);
   return { ...q, ctx: L.map((l) => l.g), cat: "Compréhension" };
+}
+
+function qComprOrale(it: Item): Question | null {
+  const oral = it.oralId
+    ? ORAL_EXERCISES.find((x) => x.id === it.oralId)
+    : ORAL_EXERCISES.length > 0
+      ? pick(ORAL_EXERCISES)
+      : undefined;
+
+  if (
+    !oral ||
+    oral.options.length < 2 ||
+    !oral.options.includes(oral.answer)
+  ) {
+    return null;
+  }
+
+  const options = shuf(oral.options);
+
+  return {
+    type: "choice",
+    label: `Compréhension orale · ${oral.title}`,
+    cat: "Compréhension orale",
+    prompt: oral.prompt,
+    audioSrc: oral.audioSrc,
+    opts: options.map((text, i) => ({
+      key: String(i),
+      text,
+    })),
+    answer: String(options.indexOf(oral.answer)),
+    good: oral.answer,
+    note: oral.transcript
+      ? `Transcription : ${oral.transcript}`
+      : undefined,
+  };
 }
 
 function qTcloze(it: Item): Question {
@@ -287,6 +341,7 @@ export function makeQuestion(it: Item, P: Progress): Question | null {
     case "cat": return qCat();
     case "correct": return qCorrect();
     case "compr": return qCompr(it);
+    case "compr-orale": return qComprOrale(it);
     case "tcloze": return qTcloze(it);
     case "ttrans": return qTtrans(it);
   }
@@ -297,4 +352,5 @@ export const KIND_LABEL: Record<Kind, string> = {
   cloze: "Phrase à compléter", vf: "Vrai ou faux", flip: "Cartes à retourner", match: "Associer", dictee: "Dictée", gram: "Grammaire",
   ending: "Terminaisons", particle: "Particules", cat: "Catégories grammaticales", correct: "Correction de phrases",
   compr: "Compréhension écrite", tcloze: "Texte à trous", ttrans: "Traduction de texte",
+  "compr-orale": "Compréhension orale",
 };
