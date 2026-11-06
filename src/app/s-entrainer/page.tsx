@@ -27,6 +27,8 @@ const exos: Mode[] = [
   { href: `/jouer?mode=ttrans${B}`, title: "Traduction de textes entiers", desc: "Traduis un texte ligne par ligne" },
   { href: `/jouer?mode=flip${B}`, title: "Cartes à retourner", desc: "Je devine, puis je vérifie" },
   { href: `/jouer?mode=memo${B}`, title: "Mémory", desc: "Retrouve les paires" },
+  { href: `/jouer?mode=compr-orale${B}`, title: "Compréhension orale", desc: "Écoute un extrait et réponds aux questions" },
+  { href: "/oral/parler", title: "Expression orale", desc: "Enregistre ta réponse puis réécoute-la" },
 ];
 const KS = Object.entries(KIND_LABEL).filter(([k]) => !["match", "compr", "tcloze", "ttrans", "flip"].includes(k)) as [Kind, string][];
 
