@@ -36,6 +36,7 @@ const size = (s: string) => (s.length > 14 ? "s" : "");
 
 function Choice({ q, onResult, keys }: Props<"choice">) {
   const [picked, setPicked] = useState<string | null>(null);
+  const [audioError, setAudioError] = useState(false);
   useEffect(() => {
     if (!keys || picked !== null) return;
     const h = (e: KeyboardEvent) => {
@@ -60,6 +61,27 @@ function Choice({ q, onResult, keys }: Props<"choice">) {
       {q.ctx && <div className="q-ctx">{q.ctx.map((l, i) => <div key={i}>{l}</div>)}</div>}
       <div className={`big ${size(q.prompt)}`}>{q.prompt}</div>
       {q.sub && <p className="lab" style={{ fontSize: 19, color: "var(--tx)" }}>{q.sub}</p>}
+      {q.audioSrc && (
+        <div style={{ margin: "12px 0" }}>
+          <audio
+            controls
+            preload="none"
+            src={q.audioSrc}
+            aria-label="Écouter l'extrait audio"
+            onError={() => setAudioError(true)}
+            onCanPlay={() => setAudioError(false)}
+            style={{ width: "100%", maxWidth: 420 }}
+          >
+            Ton navigateur ne peut pas lire cet extrait audio.
+          </audio>
+
+          {audioError && (
+            <p className="note" role="alert">
+              Impossible de lire le fichier audio : {q.audioSrc}
+            </p>
+          )}
+        </div>
+      )}
       {q.opts.map((o, i) => (
         <button key={o.key} className={`ch ${picked !== null ? (o.key === q.answer ? "ok" : o.key === picked ? "ko" : "") : ""}`} disabled={picked !== null} onClick={() => choose(o.key)}>
           {keys && i < 9 && <span className="kb" aria-hidden="true">{i + 1}</span>}
