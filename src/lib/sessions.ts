@@ -2,6 +2,7 @@ import { C, GRAMMAR, LESSONS, TEXTS, levelWords, lessonById, sentences, textById
 import type { Progress } from "./progress";
 import type { Item, Kind } from "./questions";
 import { day, pick, seeded, shuf, weekStart } from "./text";
+import { ORAL_EXERCISES } from "@/data/oral";
 
 export type SessionCfg = {
   mode: string;
@@ -22,6 +23,16 @@ const FREE_K = new Set<Kind>(["gram", "ending", "particle", "cat"]);
 const TEXT_K = new Set<Kind>(["compr", "tcloze", "ttrans"]);
 
 export function itemFor(k: Kind, rnd: () => number = Math.random, pool?: { id: number; u: number }[]): Item {
+  if (k === "compr-orale") {
+    const oral =
+      ORAL_EXERCISES.length > 0
+        ? pick(ORAL_EXERCISES, rnd)
+        : undefined;
+
+    return oral
+      ? { k, oralId: oral.id }
+      : { k };
+  }
   if (FREE_K.has(k)) return { k };
   if (TEXT_K.has(k)) return { k, textId: pick(TEXTS, rnd).id };
   if (SENT_K.has(k)) {
@@ -107,6 +118,19 @@ export function buildSession(mode: string, sp: URLSearchParams, P: Progress): Se
     case "tr-gf": return base("Traduction galme → français", many(12, (i) => itemFor("qf", rnd, i % 2 ? sentences : words)), { retry: true });
     case "inverse": return base("Traduction inversée", many(16, (i) => itemFor((["qf", "type", "fq", "type"] as Kind[])[i % 4], rnd, i % 3 === 0 ? sentences : words)), { retry: true });
     case "compr": return base("Compréhension écrite", shuf(TEXTS).slice(0, 4).flatMap((x) => [itemFor("compr", rnd), { k: "compr" as Kind, textId: x.id }]));
+    case "compr-orale": {
+      const items = shuf(ORAL_EXERCISES)
+        .slice(0, 10)
+        .map((oral): Item => ({
+          k: "compr-orale",
+          oralId: oral.id,
+        }));
+
+      return base("Compréhension orale", items, {
+        empty:
+          "Aucun exercice audio n'est configuré. Ajoute un exercice dans src/data/oral.ts et son fichier dans public/audio/galme/.",
+      });
+    }
     case "tcloze": return base("Textes à trous", shuf(TEXTS).slice(0, 3).map((x): Item => ({ k: "tcloze", textId: x.id })));
     case "ttrans": return base("Traduction de textes entiers", shuf(TEXTS.filter((x) => x.kind === "phrases")).slice(0, 2).map((x): Item => ({ k: "ttrans", textId: x.id })));
     case "ordre": return base("Phrases à remettre dans l'ordre", rep("build", 10), { retry: true });
