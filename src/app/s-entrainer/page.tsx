@@ -17,6 +17,11 @@ const exos: Mode[] = [
   { href: `/jouer?mode=tr-fg${B}`, title: "Traduction français → galme", desc: "Écris la réponse en galme" },
   { href: `/jouer?mode=tr-gf${B}`, title: "Traduction galme → français", desc: "Choisis la bonne traduction" },
   { href: `/jouer?mode=compr${B}`, title: "Compréhension écrite", desc: "Lis un texte, réponds aux questions" },
+  {
+    href: `/jouer?mode=compr-orale${B}`,
+    title: "Compréhension orale",
+    desc: "Écoute un extrait puis choisis la bonne réponse",
+  },
   { href: `/jouer?mode=tcloze${B}`, title: "Textes à trous", desc: "Complète les mots manquants" },
   { href: `/jouer?mode=ordre${B}`, title: "Phrases à remettre dans l'ordre", desc: "Reconstitue la phrase en galme" },
   { href: `/jouer?mode=gram${B}`, title: "Questions de grammaire", desc: "Les règles du galme" },
@@ -30,7 +35,11 @@ const exos: Mode[] = [
   { href: `/jouer?mode=compr-orale${B}`, title: "Compréhension orale", desc: "Écoute un extrait et réponds aux questions" },
   { href: "/oral/parler", title: "Expression orale", desc: "Enregistre ta réponse puis réécoute-la" },
 ];
-const KS = Object.entries(KIND_LABEL).filter(([k]) => !["match", "compr", "tcloze", "ttrans", "flip"].includes(k)) as [Kind, string][];
+const KS = Object.entries(KIND_LABEL)
+  .filter(([k]) =>
+    !["match", "compr", "compr-orale", "tcloze", "ttrans", "flip"].includes(k)
+  )
+  as [Kind, string][];
 
 export default function Entrainer() {
   const { P } = useStore();
