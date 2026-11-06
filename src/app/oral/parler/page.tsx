@@ -1,82 +1,36 @@
-"use client";
+import Link from "next/link";
+import { Recorder } from "@/components/Recorder";
 
-import { useEffect, useRef, useState } from "react";
-
-export function Recorder() {
-  const [recording, setRecording] = useState(false);
-  const [src, setSrc] = useState<string | null>(null);
-  const [error, setError] = useState("");
-  const recorder = useRef<MediaRecorder | null>(null);
-  const stream = useRef<MediaStream | null>(null);
-  const chunks = useRef<Blob[]>([]);
-  const objectUrl = useRef<string | null>(null);
-
-  useEffect(() => () => {
-    const r = recorder.current;
-    if (r?.state === "recording") {
-      r.onstop = null;
-      r.stop();
-    }
-    stream.current?.getTracks().forEach((track) => track.stop());
-    if (objectUrl.current) URL.revokeObjectURL(objectUrl.current);
-  }, []);
-
-  async function start() {
-    setError("");
-
-    try {
-      if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) {
-        throw new Error("Enregistrement non pris en charge");
-      }
-
-      const currentStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      stream.current = currentStream;
-
-      const currentRecorder = new MediaRecorder(currentStream);
-      recorder.current = currentRecorder;
-      chunks.current = [];
-
-      currentRecorder.ondataavailable = (event) => {
-        if (event.data.size > 0) chunks.current.push(event.data);
-      };
-
-      currentRecorder.onstop = () => {
-        const blob = new Blob(
-          chunks.current,
-          currentRecorder.mimeType ? { type: currentRecorder.mimeType } : undefined,
-        );
-
-        if (objectUrl.current) URL.revokeObjectURL(objectUrl.current);
-        const url = URL.createObjectURL(blob);
-        objectUrl.current = url;
-        setSrc(url);
-
-        currentStream.getTracks().forEach((track) => track.stop());
-        stream.current = null;
-        setRecording(false);
-      };
-
-      currentRecorder.start();
-      setRecording(true);
-    } catch {
-      stream.current?.getTracks().forEach((track) => track.stop());
-      stream.current = null;
-      setError("Micro indisponible ou autorisation refusée.");
-    }
-  }
-
-  function stop() {
-    if (recorder.current?.state === "recording") recorder.current.stop();
-  }
-
+export default function ParlerPage() {
   return (
-    <section className="box">
-      <button className="btn" type="button" onClick={recording ? stop : start}>
-        {recording ? "Arrêter l’enregistrement" : "Enregistrer ma réponse"}
-      </button>
+    <main style={{ maxWidth: 640, margin: "0 auto", padding: 16 }}>
+      <p>
+        <Link href="/s-entrainer">← Retour à S’entraîner</Link>
+      </p>
 
-      {error && <p role="alert">{error}</p>}
-      {src && <audio controls src={src} />}
-    </section>
+      <h1>Expression orale</h1>
+
+      <section style={{ margin: "16px 0" }}>
+        <h2>Consigne</h2>
+        <p>Présente-toi en Galme : dis bonjour, puis ton prénom.</p>
+        <p>
+          Exemple : <strong>zhoyama, ena kala Sacha</strong>
+          <br />
+          <em>(bonjour, je m’appelle Sacha)</em>
+        </p>
+      </section>
+
+      <Recorder />
+
+      <section style={{ marginTop: 24 }}>
+        <h2>Réécoute-toi et vérifie</h2>
+        <ul>
+          <li>Ai-je bien dit bonjour ?</li>
+          <li>Ai-je dit mon prénom avec la bonne formule ?</li>
+          <li>Ma prononciation est-elle claire ? Quels sons dois-je retravailler ?</li>
+        </ul>
+        <p>Si ce n’est pas encore ça, enregistre-toi à nouveau.</p>
+      </section>
+    </main>
   );
 }
