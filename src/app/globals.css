@@ -127,3 +127,406 @@ kbd { background: var(--bg); border: 1px solid var(--bd); border-bottom-width: 2
 .foot { text-align: center; font-size: 13px; color: var(--mu); margin-top: 28px; }
 .foot a { color: var(--mu); }
 .lock-note { font-size: 13px; color: var(--mu); }
+
+
+/* ===============================
+   GALME — finition visuelle
+   À ajouter en bas de globals.css
+================================ */
+
+/* Ombres douces, adaptées aux thèmes existants */
+:root {
+  --g-shadow: 0 8px 24px rgba(20, 35, 50, 0.07);
+  --g-shadow-strong: 0 18px 42px rgba(20, 35, 50, 0.12);
+  --g-focus: color-mix(in srgb, var(--ac) 35%, transparent);
+}
+
+[data-theme="sombre"],
+[data-theme="foret"],
+[data-theme="contraste"] {
+  --g-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  --g-shadow-strong: 0 18px 42px rgba(0, 0, 0, 0.35);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --g-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    --g-shadow-strong: 0 18px 42px rgba(0, 0, 0, 0.35);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  background-image: radial-gradient(
+    900px 430px at 50% -180px,
+    color-mix(in srgb, var(--ac) 10%, transparent),
+    transparent 72%
+  );
+}
+
+::selection {
+  background: color-mix(in srgb, var(--ac) 24%, transparent);
+}
+
+/* Largeur et respiration de la page */
+main.wrap {
+  max-width: 1120px;
+  padding: clamp(26px, 4vw, 44px) 20px 116px;
+}
+
+h1 {
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  margin: 12px 0 8px;
+}
+
+main.wrap > h1 + p.mu {
+  max-width: 720px;
+  font-size: 1.04rem;
+  line-height: 1.65;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-underline-offset: 0.2em;
+}
+
+/* Barre de navigation */
+.hdr {
+  background: color-mix(in srgb, var(--bg) 84%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--bd) 75%, transparent);
+  backdrop-filter: blur(16px) saturate(145%);
+}
+
+.hdr-in {
+  max-width: 1160px;
+  min-height: 70px;
+  padding: 10px 20px;
+}
+
+.brand {
+  font-size: 24px;
+}
+
+.nav-top {
+  gap: 6px;
+}
+
+.nav-top a {
+  padding: 9px 13px;
+  border: 1px solid transparent;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.nav-top a[aria-current="page"] {
+  box-shadow: 0 5px 14px color-mix(in srgb, var(--ac) 20%, transparent);
+}
+
+.hdr-xp > span,
+.hdr-xp > a {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 10px;
+  border: 1px solid var(--bd);
+  border-radius: 999px;
+  background: var(--card);
+  white-space: nowrap;
+}
+
+/* Cartes et statistiques */
+.grid {
+  gap: 14px;
+}
+
+.stats {
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.st {
+  padding: 16px 12px;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--card) 95%, var(--ac) 5%);
+  box-shadow: var(--g-shadow);
+}
+
+.st b {
+  font-size: clamp(24px, 3vw, 32px);
+  letter-spacing: -0.03em;
+}
+
+.box {
+  padding: clamp(18px, 2.5vw, 26px);
+  margin-top: 16px;
+  border-radius: 22px;
+  border-color: color-mix(in srgb, var(--bd) 82%, transparent);
+  box-shadow: var(--g-shadow);
+}
+
+.box.flat {
+  padding: 12px 14px;
+  border-radius: 16px;
+}
+
+/* Met en valeur la séance principale du tableau de bord */
+.wrap > .stats + .box {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--card) 90%, var(--ac) 10%),
+    var(--card) 70%
+  );
+  border-color: color-mix(in srgb, var(--ac) 28%, var(--bd));
+}
+
+/* Boutons */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    var(--ac),
+    color-mix(in srgb, var(--ac) 82%, var(--tx))
+  );
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--ac) 20%, transparent);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.btn.alt {
+  background: var(--card);
+  box-shadow: none;
+}
+
+.btn.sm {
+  display: inline-flex;
+  min-height: 38px;
+}
+
+.btn:disabled {
+  box-shadow: none;
+  transform: none;
+}
+
+/* Choix de réponse, liens en forme de carte et filtres */
+.ch {
+  padding: 14px 16px;
+  border: 1px solid var(--bd);
+  border-radius: 14px;
+  background: var(--card);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.chip,
+.tab {
+  border-width: 1px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.tab {
+  border-radius: 12px;
+}
+
+/* Champs de formulaire */
+input:not([type="range"]):not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]),
+select,
+textarea {
+  border-width: 1px;
+  border-color: var(--bd);
+  background: var(--card);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+input:not([type="range"]):not([type="checkbox"]):not([type="radio"]):focus,
+select:focus,
+textarea:focus {
+  border-color: var(--ac);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--ac) 14%, transparent);
+}
+
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"] {
+  accent-color: var(--ac);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+:focus-visible {
+  outline: 3px solid var(--g-focus);
+  outline-offset: 3px;
+}
+
+/* Détails et tableaux */
+details {
+  padding: 6px 16px;
+  border-radius: 16px;
+}
+
+summary::marker {
+  color: var(--ac);
+}
+
+td,
+th {
+  padding: 10px 8px;
+}
+
+th {
+  color: var(--mu);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+kbd {
+  border-radius: 7px;
+}
+
+/* Fenêtres et notifications */
+.overlay {
+  backdrop-filter: blur(6px);
+}
+
+.modal {
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  border-color: color-mix(in srgb, var(--bd) 80%, transparent);
+  border-radius: 22px;
+  box-shadow: var(--g-shadow-strong);
+}
+
+.toast {
+  border: 1px solid color-mix(in srgb, var(--bg) 22%, transparent);
+}
+
+/* Navigation mobile */
+.nav-bot {
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+  border-top-color: color-mix(in srgb, var(--bd) 80%, transparent);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 -8px 28px rgba(20, 35, 50, 0.06);
+}
+
+.nav-bot a {
+  min-height: 52px;
+  justify-content: center;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.foot {
+  padding-bottom: 8px;
+  line-height: 1.8;
+}
+
+/* Survols uniquement sur les appareils qui en ont un */
+@media (hover: hover) {
+  .btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: var(--g-shadow-strong);
+    filter: brightness(1.04);
+  }
+
+  .btn.alt:hover:not(:disabled) {
+    background: var(--bg);
+  }
+
+  .ch:hover:not(:disabled),
+  .tab:hover,
+  .chip:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--g-shadow);
+  }
+}
+
+/* Ajustements mobile */
+@media (max-width: 700px) {
+  main.wrap {
+    padding: 24px 16px calc(108px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .hdr-in {
+    min-height: 64px;
+    gap: 10px;
+    padding-inline: 14px;
+  }
+
+  .hdr-xp {
+    gap: 5px;
+    font-size: 11px;
+  }
+
+  .hdr-xp > span,
+  .hdr-xp > a {
+    padding: 6px 8px;
+  }
+
+  .stats {
+    gap: 8px;
+  }
+
+  .stats.four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .st {
+    padding: 13px 7px;
+    border-radius: 15px;
+    font-size: 12px;
+  }
+
+  .st b {
+    font-size: 23px;
+  }
+
+  .box {
+    border-radius: 18px;
+  }
+
+  .nav-bot {
+    gap: 4px;
+    padding-inline: 8px;
+  }
+
+  .nav-bot a {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand small {
+    display: none;
+  }
+
+  .hdr-xp {
+    font-size: 10px;
+  }
+
+  .nav-bot a {
+    font-size: 9px;
+  }
+}
+
+@media (min-width: 900px) {
+  main.wrap {
+    padding-bottom: 64px;
+  }
+}
