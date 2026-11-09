@@ -1,64 +1,50 @@
 @import "tailwindcss";
 
 /* ==========================================================
-   GALME — CSS PRINCIPAL
-   Version clean, alignée, cohérente
+   GALME — STYLES COMPLETS
    ========================================================== */
 
-/* ==========================================================
-   1. THÈMES
-   ========================================================== */
+/* 1. THÈMES
+   ---------------------------------------------------------- */
 
 :root {
-  --bg: #f2f3f7;
+  --bg: #f1f2f6;
   --card: #ffffff;
   --tx: #1b2033;
-  --mu: #687083;
+  --mu: #686e82;
   --ac: #14767c;
-  --ac2: #ad7114;
+  --ac2: #af7112;
   --ok: #28764b;
   --ko: #b33b34;
-  --bd: #d8dce7;
+  --bd: #d8dbe5;
   --on: #ffffff;
 
   --serif: "Young Serif", Georgia, "Times New Roman", serif;
   --sans: Figtree, Inter, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --mono: ui-monospace, SFMono-Regular, Consolas, monospace;
 
-  --content-width: 1040px;
+  --content-width: 960px;
   --header-height: 68px;
 
-  --radius-sm: 7px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
+  --radius-sm: 6px;
+  --radius-md: 9px;
+  --radius-lg: 13px;
 
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 12px;
-  --space-lg: 16px;
-  --space-xl: 22px;
-  --space-2xl: 32px;
+  --surface: color-mix(in srgb, var(--card) 65%, var(--bg));
+  --surface-accent: color-mix(in srgb, var(--ac) 8%, var(--card));
+  --surface-warm: color-mix(in srgb, var(--ac2) 9%, var(--card));
+  --surface-success: color-mix(in srgb, var(--ok) 9%, var(--card));
+  --surface-danger: color-mix(in srgb, var(--ko) 9%, var(--card));
 
-  --surface: color-mix(in srgb, var(--card) 72%, var(--bg));
-  --surface-2: color-mix(in srgb, var(--bg) 72%, var(--card));
-  --surface-accent: color-mix(in srgb, var(--ac) 9%, var(--card));
-  --surface-warm: color-mix(in srgb, var(--ac2) 10%, var(--card));
-  --surface-success: color-mix(in srgb, var(--ok) 10%, var(--card));
-  --surface-danger: color-mix(in srgb, var(--ko) 10%, var(--card));
-
-  --border-strong: color-mix(in srgb, var(--tx) 24%, var(--bd));
-  --focus-ring: color-mix(in srgb, var(--ac) 28%, transparent);
-
-  --shadow-card: 0 1px 2px rgb(20 24 40 / 0.04);
-  --shadow-modal:
-    0 18px 48px rgb(5 8 18 / 0.26),
-    0 4px 12px rgb(5 8 18 / 0.14);
+  --border-strong: color-mix(in srgb, var(--tx) 22%, var(--bd));
+  --focus-ring: color-mix(in srgb, var(--ac) 24%, transparent);
+  --shadow-float: 0 10px 28px rgb(20 24 40 / 0.16);
 
   color-scheme: light;
 }
 
-/* Mode sombre automatique */
+/* Thème automatique selon les préférences de l'appareil */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]),
   :root[data-theme="auto"] {
@@ -72,32 +58,30 @@
     --ko: #ea817a;
     --bd: #303647;
     --on: #10131d;
-
-    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.18);
-    --shadow-modal:
-      0 18px 48px rgb(0 0 0 / 0.5),
-      0 4px 12px rgb(0 0 0 / 0.32);
+    --shadow-float: 0 10px 28px rgb(0 0 0 / 0.38);
 
     color-scheme: dark;
   }
 }
 
-[data-theme="clair"] {
-  --bg: #f2f3f7;
+/* Clair */
+:root[data-theme="clair"] {
+  --bg: #f1f2f6;
   --card: #ffffff;
   --tx: #1b2033;
-  --mu: #687083;
+  --mu: #686e82;
   --ac: #14767c;
-  --ac2: #ad7114;
+  --ac2: #af7112;
   --ok: #28764b;
   --ko: #b33b34;
-  --bd: #d8dce7;
+  --bd: #d8dbe5;
   --on: #ffffff;
 
   color-scheme: light;
 }
 
-[data-theme="sombre"] {
+/* Sombre */
+:root[data-theme="sombre"] {
   --bg: #10131d;
   --card: #191d2a;
   --tx: #eceef5;
@@ -108,16 +92,13 @@
   --ko: #ea817a;
   --bd: #303647;
   --on: #10131d;
-
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.18);
-  --shadow-modal:
-    0 18px 48px rgb(0 0 0 / 0.5),
-    0 4px 12px rgb(0 0 0 / 0.32);
+  --shadow-float: 0 10px 28px rgb(0 0 0 / 0.38);
 
   color-scheme: dark;
 }
 
-[data-theme="aurore"] {
+/* Aurore */
+:root[data-theme="aurore"] {
   --bg: #f5f0f7;
   --card: #fffaff;
   --tx: #301d3f;
@@ -132,7 +113,8 @@
   color-scheme: light;
 }
 
-[data-theme="foret"] {
+/* Forêt */
+:root[data-theme="foret"] {
   --bg: #111a16;
   --card: #192720;
   --tx: #e5eee9;
@@ -143,16 +125,13 @@
   --ko: #e58479;
   --bd: #304339;
   --on: #101914;
-
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.2);
-  --shadow-modal:
-    0 18px 48px rgb(0 0 0 / 0.5),
-    0 4px 12px rgb(0 0 0 / 0.32);
+  --shadow-float: 0 10px 28px rgb(0 0 0 / 0.38);
 
   color-scheme: dark;
 }
 
-[data-theme="sepia"] {
+/* Sépia */
+:root[data-theme="sepia"] {
   --bg: #eee7da;
   --card: #faf5ea;
   --tx: #3c3022;
@@ -167,7 +146,8 @@
   color-scheme: light;
 }
 
-[data-theme="contraste"] {
+/* Contraste élevé */
+:root[data-theme="contraste"] {
   --bg: #000000;
   --card: #080808;
   --tx: #ffffff;
@@ -178,26 +158,13 @@
   --ko: #ff8175;
   --bd: #a0a0a0;
   --on: #000000;
-
-  --surface: #111111;
-  --surface-2: #111111;
-  --surface-accent: #181818;
-  --surface-warm: #181818;
-  --surface-success: #181818;
-  --surface-danger: #181818;
-
-  --border-strong: #ffffff;
-  --focus-ring: #ffe34f;
-
-  --shadow-card: none;
-  --shadow-modal: none;
+  --shadow-float: none;
 
   color-scheme: dark;
 }
 
-/* ==========================================================
-   2. RESET / BASE
-   ========================================================== */
+/* 2. BASE ET TYPOGRAPHIE
+   ---------------------------------------------------------- */
 
 *,
 *::before,
@@ -207,8 +174,8 @@
 
 html {
   min-height: 100%;
-  scroll-padding-top: calc(var(--header-height) + 18px);
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 18px);
   -webkit-text-size-adjust: 100%;
 }
 
@@ -229,6 +196,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+::selection {
+  background: color-mix(in srgb, var(--ac) 22%, transparent);
+  color: var(--tx);
+}
+
 button,
 input,
 select,
@@ -245,10 +217,6 @@ summary {
   -webkit-tap-highlight-color: transparent;
 }
 
-button {
-  color: inherit;
-}
-
 button:not(:disabled),
 summary {
   cursor: pointer;
@@ -260,68 +228,37 @@ button:disabled {
 
 img,
 svg,
-video,
-canvas {
+video {
   max-width: 100%;
 }
 
 audio {
   display: block;
   width: 100%;
-  margin: var(--space-lg) 0;
+  margin: 16px 0;
 }
 
-[hidden] {
-  display: none !important;
-}
-
-::selection {
-  background: color-mix(in srgb, var(--ac) 24%, transparent);
-  color: var(--tx);
-}
-
-/* ==========================================================
-   3. TYPOGRAPHIE
-   ========================================================== */
-
-h1,
-h2,
-h3 {
-  color: var(--tx);
-  overflow-wrap: anywhere;
-}
-
-h1 {
-  margin: 0 0 var(--space-sm);
-
-  font-family: var(--serif);
-  font-size: clamp(2rem, 4.5vw, 2.85rem);
-  font-weight: 400;
-  line-height: 1.12;
-  letter-spacing: -0.025em;
-}
-
-h2 {
-  margin: 0 0 var(--space-md);
-
-  font-family: var(--serif);
-  font-size: clamp(1.35rem, 2.5vw, 1.65rem);
-  font-weight: 400;
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-}
-
-h3 {
-  margin: 0 0 var(--space-xs);
-
-  font-family: var(--sans);
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.4;
+p,
+.note,
+.lock-note,
+li {
+  text-align: justify;
+  text-align-last: start;
+  hyphens: auto;
 }
 
 p {
-  margin: var(--space-sm) 0;
+  margin: 0 0 12px;
+}
+
+ul,
+ol {
+  margin: 12px 0;
+  padding-left: 24px;
+}
+
+li + li {
+  margin-top: 5px;
 }
 
 a {
@@ -330,30 +267,56 @@ a {
   text-underline-offset: 3px;
 }
 
-strong,
-b {
+hr {
+  height: 0;
+  margin: 24px 0;
+  border: 0;
+  border-top: 1px solid var(--bd);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--tx);
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  margin: 4px 0 10px;
+
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 2.7rem);
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  margin: 0 0 10px;
+
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 3vw, 1.65rem);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+h3 {
+  margin: 0 0 6px;
+
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+b,
+strong {
   font-weight: 700;
 }
 
 small {
   font-size: 0.875em;
-}
-
-ul,
-ol {
-  margin: var(--space-md) 0;
-  padding-left: 24px;
-}
-
-li + li {
-  margin-top: var(--space-xs);
-}
-
-hr {
-  height: 0;
-  margin: var(--space-xl) 0;
-  border: 0;
-  border-top: 1px solid var(--bd);
 }
 
 .mu {
@@ -373,26 +336,21 @@ hr {
   color: var(--tx);
 }
 
-/* ==========================================================
-   4. ACCESSIBILITÉ
-   ========================================================== */
-
-:focus {
-  outline: none;
-}
+/* 3. ACCESSIBILITÉ
+   ---------------------------------------------------------- */
 
 :focus-visible {
-  outline: 3px solid var(--focus-ring);
+  outline: 3px solid var(--ac2);
   outline-offset: 3px;
 }
 
 .skip {
   position: fixed;
   z-index: 200;
-  top: 10px;
-  left: 10px;
+  top: 8px;
+  left: 8px;
 
-  transform: translateY(calc(-100% - 20px));
+  transform: translateY(calc(-100% - 16px));
 
   padding: 9px 14px;
   border-radius: var(--radius-sm);
@@ -409,26 +367,32 @@ hr {
   transform: translateY(0);
 }
 
-/* ==========================================================
-   5. STRUCTURE GÉNÉRALE
-   ========================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* 4. CONTENEUR ET MISE EN PAGE
+   ---------------------------------------------------------- */
 
 .wrap {
   width: 100%;
   max-width: var(--content-width);
-  margin-inline: auto;
-
-  padding: 34px 20px;
-  padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px));
+  margin: 0 auto;
+  padding: 32px 20px;
+  padding-bottom: calc(108px + env(safe-area-inset-bottom, 0px));
 }
 
 .wrap > h1 + p.mu {
-  max-width: 720px;
-  margin-top: 0;
-  margin-bottom: var(--space-xl);
+  max-width: 680px;
+  margin: 0 0 24px;
 
   color: var(--mu);
-
   font-size: 16px;
   line-height: 1.7;
 }
@@ -439,7 +403,7 @@ hr {
 
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 8px;
 }
 
 .row > * {
@@ -450,16 +414,16 @@ hr {
   justify-content: space-between;
 }
 
-.row.between > :last-child {
-  margin-left: auto;
-}
-
 .grid {
   display: grid;
   min-width: 0;
 
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
-  gap: var(--space-md);
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 250px), 1fr)
+  );
+  align-items: stretch;
+  gap: 14px;
 }
 
 .grid > * {
@@ -471,9 +435,8 @@ hr {
   margin-top: 0;
 }
 
-/* ==========================================================
-   6. HEADER
-   ========================================================== */
+/* 5. HEADER ET NAVIGATION
+   ---------------------------------------------------------- */
 
 .hdr {
   position: sticky;
@@ -489,27 +452,26 @@ hr {
 .hdr-in {
   display: flex;
   width: 100%;
-  max-width: 1180px;
+  max-width: 1120px;
   min-height: var(--header-height);
-  margin-inline: auto;
+  margin: 0 auto;
+  padding: 8px 20px;
 
   align-items: center;
-  gap: var(--space-md);
-
-  padding: 8px 20px;
+  gap: 16px;
 }
 
 .brand {
   display: block;
-  flex: 0 0 auto;
   min-width: 0;
+  flex-shrink: 0;
 
   color: var(--tx);
 
   font-family: var(--serif);
   font-size: 22px;
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.2;
   letter-spacing: 0.12em;
 
   text-decoration: none;
@@ -517,15 +479,15 @@ hr {
 
 .brand small {
   display: block;
-  margin-top: 3px;
+  margin-top: 2px;
 
   color: var(--mu);
 
   font-family: var(--sans);
   font-size: 10px;
   font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: 0.025em;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
 }
 
 .nav-top {
@@ -533,46 +495,41 @@ hr {
   min-width: 0;
 
   align-items: center;
-  justify-content: center;
-  gap: 4px;
+  gap: 3px;
+
+  margin-left: auto;
 }
 
 .nav-top a {
-  display: inline-flex;
-  min-height: 36px;
-
-  align-items: center;
-  justify-content: center;
-
-  padding: 7px 10px;
+  padding: 8px 10px;
   border-radius: var(--radius-sm);
 
   color: var(--mu);
 
   font-size: 14px;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.4;
   white-space: nowrap;
   text-decoration: none;
 
   transition:
-    background-color 140ms ease,
-    color 140ms ease;
+    color 150ms ease,
+    background-color 150ms ease;
 }
 
 .nav-top a[aria-current="page"] {
   background: var(--surface-accent);
   color: var(--ac);
+  box-shadow: inset 0 -2px 0 var(--ac);
 }
 
 .hdr-xp {
   display: flex;
-  flex: 0 1 auto;
   min-width: 0;
 
   align-items: center;
   justify-content: flex-end;
-  gap: var(--space-sm);
+  gap: 10px;
 
   margin-left: auto;
 
@@ -580,17 +537,11 @@ hr {
 
   font-size: 13px;
   font-weight: 600;
-  line-height: 1.3;
   font-variant-numeric: tabular-nums;
 }
 
 .hdr-xp > span,
 .hdr-xp > a {
-  display: inline-flex;
-  min-width: 0;
-
-  align-items: center;
-
   white-space: nowrap;
 }
 
@@ -599,20 +550,14 @@ hr {
   text-decoration: none;
 }
 
-/* ==========================================================
-   7. NAVIGATION MOBILE
-   ========================================================== */
-
 .nav-bot {
   position: fixed;
   z-index: 40;
-
   right: 0;
   bottom: 0;
   left: 0;
 
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  display: flex;
   gap: 2px;
 
   padding: 6px;
@@ -627,12 +572,13 @@ hr {
 
   display: flex;
   min-width: 0;
-  min-height: 54px;
+  min-height: 52px;
+  flex: 1;
 
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 2px;
 
   padding: 5px 2px;
   border-radius: var(--radius-sm);
@@ -641,7 +587,7 @@ hr {
 
   font-size: 10px;
   font-weight: 600;
-  line-height: 1.15;
+  line-height: 1.2;
   text-align: center;
   text-decoration: none;
   overflow-wrap: anywhere;
@@ -661,32 +607,26 @@ hr {
 .nav-bot a[aria-current="page"]::before {
   position: absolute;
   top: 0;
-  right: 24%;
-  left: 24%;
+  right: 22%;
+  left: 22%;
 
   height: 2px;
-  border-radius: 999px;
-
   background: var(--ac);
-
   content: "";
 }
 
-/* ==========================================================
-   8. CARTES
-   ========================================================== */
+/* 6. CARTES ET STATISTIQUES
+   ---------------------------------------------------------- */
 
 .box {
   min-width: 0;
-
-  margin-top: var(--space-lg);
+  margin-top: 14px;
   padding: 20px;
 
   border: 1px solid var(--bd);
   border-radius: var(--radius-lg);
 
   background: var(--card);
-  box-shadow: var(--shadow-card);
 }
 
 .box > :first-child {
@@ -700,26 +640,16 @@ hr {
 .box.flat {
   padding: 12px 14px;
   border-radius: var(--radius-md);
-  box-shadow: none;
 }
-
-/* Carte principale après stats */
-.wrap > .stats + .box {
-  border-left: 3px solid var(--ac);
-}
-
-/* ==========================================================
-   9. STATISTIQUES
-   ========================================================== */
 
 .stats {
   display: grid;
   min-width: 0;
 
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-sm);
+  gap: 9px;
 
-  margin: var(--space-xl) 0;
+  margin: 18px 0;
 }
 
 .stats.four {
@@ -728,7 +658,6 @@ hr {
 
 .st {
   min-width: 0;
-
   padding: 14px 12px;
 
   border: 1px solid var(--bd);
@@ -736,24 +665,23 @@ hr {
 
   background: var(--card);
   color: var(--mu);
-  box-shadow: var(--shadow-card);
 
   font-size: 13px;
-  line-height: 1.4;
-  text-align: left;
+  line-height: 1.45;
+  text-align: center;
   overflow-wrap: anywhere;
 }
 
 .st b {
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 
   color: var(--ac);
 
   font-family: var(--sans);
   font-size: clamp(22px, 4vw, 29px);
-  font-weight: 750;
-  line-height: 1.05;
+  font-weight: 700;
+  line-height: 1.15;
   letter-spacing: -0.035em;
   font-variant-numeric: tabular-nums;
 }
@@ -766,9 +694,8 @@ hr {
   background: var(--surface);
 }
 
-/* ==========================================================
-   10. BOUTONS
-   ========================================================== */
+/* 7. BOUTONS
+   ---------------------------------------------------------- */
 
 .btn {
   display: flex;
@@ -778,14 +705,14 @@ hr {
 
   align-items: center;
   justify-content: center;
-  gap: var(--space-sm);
+  gap: 8px;
 
-  margin-top: var(--space-md);
+  margin-top: 10px;
   padding: 11px 16px;
 
   appearance: none;
   border: 1px solid var(--ac);
-  border-radius: var(--radius-sm);
+  border-radius: 8px;
 
   background: var(--ac);
   color: var(--on);
@@ -793,23 +720,15 @@ hr {
   font-family: var(--sans);
   font-size: 16px;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.4;
 
   text-align: center;
   text-decoration: none;
   overflow-wrap: anywhere;
 
   transition:
-    background-color 140ms ease,
-    border-color 140ms ease,
-    color 140ms ease,
-    transform 80ms ease;
-}
-
-/* Important : évite les gros boutons pleine largeur dans les lignes */
-.row .btn {
-  width: auto;
-  margin-top: 0;
+    background-color 150ms ease,
+    border-color 150ms ease;
 }
 
 .btn.alt {
@@ -827,14 +746,13 @@ hr {
   padding: 7px 12px;
 
   border-radius: var(--radius-sm);
-
   font-size: 14px;
 }
 
 .btn.warn {
   border-color: var(--ko);
   background: var(--ko);
-  color: #ffffff;
+  color: var(--on);
 }
 
 .btn:disabled {
@@ -845,21 +763,20 @@ hr {
   transform: translateY(1px);
 }
 
-/* ==========================================================
-   11. CHOIX / CARTES CLIQUABLES
-   ========================================================== */
+/* 8. CHOIX, FILTRES ET ÉTIQUETTES
+   ---------------------------------------------------------- */
 
 .ch {
   display: block;
   width: 100%;
   min-width: 0;
 
-  margin-top: var(--space-sm);
+  margin-top: 8px;
   padding: 12px 14px;
 
   appearance: none;
   border: 1px solid var(--bd);
-  border-radius: var(--radius-sm);
+  border-radius: 8px;
 
   background: var(--card);
   color: var(--tx);
@@ -874,9 +791,8 @@ hr {
   overflow-wrap: anywhere;
 
   transition:
-    border-color 140ms ease,
-    background-color 140ms ease,
-    box-shadow 140ms ease;
+    border-color 150ms ease,
+    background-color 150ms ease;
 }
 
 .ch small {
@@ -919,9 +835,7 @@ hr {
 
 .ch .kb {
   float: right;
-
-  margin-top: 1px;
-  margin-left: 10px;
+  margin: 1px 0 0 10px;
   padding: 1px 6px;
 
   border: 1px solid var(--bd);
@@ -932,23 +846,17 @@ hr {
 
   font-family: var(--mono);
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.5;
 }
-
-/* ==========================================================
-   12. CHIPS / TAGS
-   ========================================================== */
 
 .chip {
   display: inline-flex;
   width: auto;
-  min-width: 0;
   min-height: 34px;
 
   align-items: center;
   justify-content: center;
-  gap: 6px;
 
   margin: 0;
   padding: 6px 11px;
@@ -963,14 +871,13 @@ hr {
   font-family: var(--sans);
   font-size: 13px;
   font-weight: 600;
-  line-height: 1.35;
-
+  line-height: 1.4;
   text-align: center;
 
   transition:
-    border-color 140ms ease,
-    background-color 140ms ease,
-    color 140ms ease;
+    border-color 150ms ease,
+    background-color 150ms ease,
+    color 150ms ease;
 }
 
 .chip.on,
@@ -988,7 +895,6 @@ hr {
 .tag {
   display: inline-flex;
   max-width: 100%;
-
   align-items: center;
 
   padding: 2px 8px;
@@ -1002,7 +908,6 @@ hr {
   font-size: 11px;
   font-weight: 700;
   line-height: 1.5;
-  white-space: nowrap;
 }
 
 .tag.mastered {
@@ -1023,9 +928,8 @@ hr {
   color: var(--ac);
 }
 
-/* ==========================================================
-   13. EXERCICES
-   ========================================================== */
+/* 9. EXERCICES ET FEEDBACK
+   ---------------------------------------------------------- */
 
 .big {
   margin: 20px 0;
@@ -1033,7 +937,7 @@ hr {
   font-family: var(--serif);
   font-size: clamp(2rem, 7vw, 2.8rem);
   font-weight: 400;
-  line-height: 1.18;
+  line-height: 1.22;
   letter-spacing: -0.02em;
 
   text-align: center;
@@ -1053,12 +957,16 @@ hr {
   font-size: 14px;
   font-weight: 500;
   line-height: 1.5;
-
   text-align: center;
 }
 
+p.lab,
+p[role="alert"] {
+  text-align: left;
+}
+
 .q-ctx {
-  margin: var(--space-md) 0;
+  margin: 12px 0;
   padding: 12px 14px;
 
   border: 1px solid var(--bd);
@@ -1069,12 +977,13 @@ hr {
 
   font-family: var(--serif);
   font-size: 18px;
-  line-height: 1.55;
+  line-height: 1.6;
+  text-align: left;
   overflow-wrap: anywhere;
 }
 
 .flash {
-  margin: var(--space-md) 0;
+  margin: 12px 0;
   padding: 22px 10px;
 
   border-top: 1px solid var(--bd);
@@ -1085,22 +994,22 @@ hr {
   font-family: var(--serif);
   font-size: clamp(1.9rem, 6vw, 2.5rem);
   font-weight: 400;
-  line-height: 1.25;
+  line-height: 1.35;
 
   text-align: center;
   overflow-wrap: anywhere;
 }
 
 .fb {
-  margin-top: var(--space-md);
+  margin-top: 12px;
   padding: 10px 12px;
 
   border-left: 3px solid currentColor;
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 
   font-size: 15px;
   font-weight: 700;
   line-height: 1.55;
+  text-align: left;
 }
 
 .fb.ok {
@@ -1124,9 +1033,8 @@ hr {
   line-height: 1.6;
 }
 
-/* ==========================================================
-   14. PROGRESSION
-   ========================================================== */
+/* 10. PROGRESSION
+   ---------------------------------------------------------- */
 
 .top {
   display: flex;
@@ -1134,7 +1042,7 @@ hr {
 
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-md);
+  gap: 12px;
 
   color: var(--mu);
 
@@ -1142,14 +1050,6 @@ hr {
   font-weight: 600;
   line-height: 1.5;
   font-variant-numeric: tabular-nums;
-}
-
-.top > * {
-  min-width: 0;
-}
-
-.top > :last-child {
-  text-align: right;
 }
 
 .bar {
@@ -1168,10 +1068,9 @@ hr {
   max-width: 100%;
 
   border-radius: inherit;
-
   background: var(--ac2);
 
-  transition: width 300ms ease;
+  transition: width 250ms ease;
 }
 
 .bar.g i {
@@ -1182,9 +1081,8 @@ hr {
   background: var(--ac);
 }
 
-/* ==========================================================
-   15. FORMULAIRES
-   ========================================================== */
+/* 11. FORMULAIRES
+   ---------------------------------------------------------- */
 
 label {
   display: block;
@@ -1195,19 +1093,15 @@ label {
   font-size: 14px;
   font-weight: 600;
   line-height: 1.5;
+  text-align: left;
 }
 
 :where(
-  input:not([type]),
-  input[type="text"],
-  input[type="search"],
-  input[type="password"],
-  input[type="email"],
-  input[type="url"],
-  input[type="tel"],
-  input[type="number"],
-  input[type="time"],
-  input[type="date"],
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not(
+      [type="submit"]
+    ):not([type="button"]):not([type="reset"]):not([type="hidden"]):not(
+      [type="file"]
+    ),
   select,
   textarea
 ) {
@@ -1219,7 +1113,7 @@ label {
   padding: 9px 11px;
 
   border: 1px solid var(--bd);
-  border-radius: var(--radius-sm);
+  border-radius: 8px;
 
   background: var(--card);
   color: var(--tx);
@@ -1228,23 +1122,14 @@ label {
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
-
-  transition:
-    border-color 140ms ease,
-    box-shadow 140ms ease;
 }
 
 :where(
-  input:not([type]),
-  input[type="text"],
-  input[type="search"],
-  input[type="password"],
-  input[type="email"],
-  input[type="url"],
-  input[type="tel"],
-  input[type="number"],
-  input[type="time"],
-  input[type="date"],
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not(
+      [type="submit"]
+    ):not([type="button"]):not([type="reset"]):not([type="hidden"]):not(
+      [type="file"]
+    ),
   select,
   textarea
 ):focus {
@@ -1262,7 +1147,6 @@ select {
   width: auto;
   min-height: 38px;
   padding: 6px 30px 6px 9px;
-
   font-size: 15px;
 }
 
@@ -1304,12 +1188,11 @@ p[role="alert"] {
   font-weight: 600;
 }
 
-/* ==========================================================
-   16. DÉTAILS
-   ========================================================== */
+/* 12. DÉTAILS ET TABLEAUX
+   ---------------------------------------------------------- */
 
 details {
-  margin-top: var(--space-md);
+  margin-top: 10px;
   padding: 3px 14px;
 
   border: 1px solid var(--bd);
@@ -1330,6 +1213,7 @@ summary {
   font-size: 15px;
   font-weight: 700;
   line-height: 1.5;
+  text-align: left;
 }
 
 summary::marker {
@@ -1340,12 +1224,9 @@ details[open] > summary {
   margin-bottom: 4px;
 }
 
-/* ==========================================================
-   17. TABLEAUX
-   ========================================================== */
-
 table {
   width: 100%;
+  max-width: 100%;
   margin: 10px 0 14px;
 
   border-collapse: collapse;
@@ -1376,7 +1257,6 @@ th {
 
 td:first-child {
   width: 42%;
-
   font-family: var(--serif);
   font-size: 16px;
 }
@@ -1395,56 +1275,24 @@ tbody tr:last-child td {
   border-bottom: 0;
 }
 
-/* Wrapper naturel si une table dépasse */
-.box table {
-  display: block;
-  overflow-x: auto;
+kbd {
+  padding: 1px 6px;
+
+  border: 1px solid var(--bd);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+
+  background: var(--surface);
+  color: var(--tx);
+
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.7;
 }
 
-/* ==========================================================
-   18. INDICATEURS
-   ========================================================== */
-
-.dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-
-  margin-right: 6px;
-  border-radius: 50%;
-
-  background: var(--bd);
-  vertical-align: 1px;
-}
-
-.dot.seen {
-  background: var(--ac);
-}
-
-.dot.learning {
-  background: var(--ac2);
-}
-
-.dot.mastered {
-  background: var(--ok);
-}
-
-.swatch {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-
-  margin-right: 6px;
-
-  border: 1px solid var(--border-strong);
-  border-radius: 50%;
-
-  vertical-align: -2px;
-}
-
-/* ==========================================================
-   19. ONGLETS
-   ========================================================== */
+/* 13. ONGLETS
+   ---------------------------------------------------------- */
 
 .tabs {
   display: flex;
@@ -1454,18 +1302,16 @@ tbody tr:last-child td {
   align-items: flex-end;
   gap: 18px;
 
-  margin-top: var(--space-lg);
+  margin-top: 14px;
 
   overflow-x: auto;
   border-bottom: 1px solid var(--bd);
 
-  scrollbar-width: thin;
   scrollbar-color: var(--bd) transparent;
+  scrollbar-width: thin;
 }
 
 .tab {
-  position: relative;
-
   flex: 0 0 auto;
 
   padding: 9px 1px 10px;
@@ -1486,8 +1332,8 @@ tbody tr:last-child td {
   text-decoration: none;
 
   transition:
-    color 140ms ease,
-    border-color 140ms ease;
+    color 150ms ease,
+    border-color 150ms ease;
 }
 
 .tab.on,
@@ -1505,9 +1351,8 @@ tbody tr:last-child td {
   color: var(--ac);
 }
 
-/* ==========================================================
-   20. LECTURE INTERACTIVE
-   ========================================================== */
+/* 14. LECTURE INTERACTIVE
+   ---------------------------------------------------------- */
 
 .sent {
   display: flex;
@@ -1518,15 +1363,16 @@ tbody tr:last-child td {
 
   font-family: var(--serif);
   font-size: 20px;
-  line-height: 1.45;
+  line-height: 1.5;
+  text-align: left;
   overflow-wrap: anywhere;
 }
 
 .tokb {
   max-width: 100%;
-
   padding: 0 1px;
 
+  appearance: none;
   border: 0;
   border-bottom: 1px dashed var(--ac);
 
@@ -1536,10 +1382,6 @@ tbody tr:last-child td {
   font: inherit;
   text-align: inherit;
   overflow-wrap: anywhere;
-
-  transition:
-    background-color 140ms ease,
-    border-color 140ms ease;
 }
 
 .tokb.on {
@@ -1548,7 +1390,7 @@ tbody tr:last-child td {
 }
 
 .pop {
-  margin-top: var(--space-sm);
+  margin-top: 8px;
   padding: 10px 12px;
 
   border: 1px solid var(--bd);
@@ -1558,37 +1400,20 @@ tbody tr:last-child td {
 
   font-size: 14px;
   line-height: 1.65;
+  text-align: left;
   overflow-wrap: anywhere;
 }
 
 mark {
   padding: 1px 2px;
-
   border-radius: 2px;
 
   background: color-mix(in srgb, var(--ac2) 30%, transparent);
   color: inherit;
 }
 
-kbd {
-  padding: 1px 6px;
-
-  border: 1px solid var(--bd);
-  border-bottom-width: 2px;
-  border-radius: 4px;
-
-  background: var(--surface);
-  color: var(--tx);
-
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.7;
-}
-
-/* ==========================================================
-   21. CALENDRIER
-   ========================================================== */
+/* 15. CALENDRIER ET BADGES
+   ---------------------------------------------------------- */
 
 .cal {
   display: grid;
@@ -1622,7 +1447,6 @@ kbd {
   aspect-ratio: auto;
 
   border: 0;
-
   background: transparent;
   color: var(--mu);
 
@@ -1643,7 +1467,6 @@ kbd {
   border-color: var(--ac);
   background: var(--ac);
   color: var(--on);
-
   font-weight: 700;
 }
 
@@ -1652,9 +1475,29 @@ kbd {
   outline-offset: 1px;
 }
 
-/* ==========================================================
-   22. BADGES
-   ========================================================== */
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+
+  margin-right: 6px;
+  border-radius: 50%;
+
+  background: var(--bd);
+  vertical-align: 1px;
+}
+
+.dot.seen {
+  background: var(--ac);
+}
+
+.dot.learning {
+  background: var(--ac2);
+}
+
+.dot.mastered {
+  background: var(--ok);
+}
 
 .bdg {
   display: flex;
@@ -1670,31 +1513,25 @@ kbd {
   border-radius: var(--radius-md);
 
   background: var(--card);
-  box-shadow: var(--shadow-card);
-
   text-align: center;
 }
 
 .bdg .ic {
   display: block;
   margin-bottom: 3px;
-
   font-size: 28px;
   line-height: 1;
 }
 
 .bdg b {
   display: block;
-
   font-size: 13px;
   line-height: 1.4;
 }
 
 .bdg small {
   display: block;
-
   color: var(--mu);
-
   font-size: 11px;
   line-height: 1.4;
 }
@@ -1709,22 +1546,32 @@ kbd {
   filter: grayscale(1);
 }
 
-/* ==========================================================
-   23. GRAPHIQUES
-   ========================================================== */
+.swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+
+  margin-right: 6px;
+
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+
+  vertical-align: -2px;
+}
+
+/* 16. GRAPHIQUES
+   ---------------------------------------------------------- */
 
 .chart {
   display: block;
   width: 100%;
   height: auto;
   max-height: 340px;
-
-  margin-top: var(--space-md);
+  margin-top: 12px;
 }
 
-/* ==========================================================
-   24. MODALES
-   ========================================================== */
+/* 17. MODALES ET NOTIFICATIONS
+   ---------------------------------------------------------- */
 
 .overlay {
   position: fixed;
@@ -1732,7 +1579,6 @@ kbd {
   inset: 0;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
@@ -1741,25 +1587,23 @@ kbd {
   padding-bottom: max(16px, env(safe-area-inset-bottom, 0px));
 
   overflow-y: auto;
-
   background: rgb(5 8 18 / 0.68);
 }
 
 .modal {
   width: 100%;
-  max-width: 480px;
+  max-width: 460px;
   max-height: calc(100vh - 32px);
   max-height: calc(100dvh - 32px);
 
   padding: 22px;
-
   overflow-y: auto;
 
   border: 1px solid var(--bd);
   border-radius: var(--radius-lg);
 
   background: var(--card);
-  box-shadow: var(--shadow-modal);
+  box-shadow: var(--shadow-float);
 }
 
 .modal > :first-child {
@@ -1770,10 +1614,6 @@ kbd {
   margin-bottom: 0;
 }
 
-/* ==========================================================
-   25. NOTIFICATIONS
-   ========================================================== */
-
 .toasts {
   position: fixed;
   z-index: 70;
@@ -1783,43 +1623,38 @@ kbd {
   left: 12px;
 
   display: flex;
-
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 8px;
 
+  padding: 0 12px;
   pointer-events: none;
 }
 
 .toast {
   width: max-content;
   max-width: min(100%, 420px);
-
   padding: 10px 15px;
 
   border: 1px solid var(--border-strong);
-  border-radius: var(--radius-sm);
+  border-radius: 8px;
 
   background: var(--tx);
-  color: var(--card);
-  box-shadow: var(--shadow-modal);
+  color: var(--bg);
 
   font-size: 14px;
   font-weight: 600;
   line-height: 1.5;
-
   text-align: center;
   overflow-wrap: anywhere;
 }
 
-/* ==========================================================
-   26. FOOTER
-   ========================================================== */
+/* 18. PIED DE PAGE
+   ---------------------------------------------------------- */
 
 .foot {
-  margin-top: var(--space-2xl);
-  padding-top: 18px;
-  padding-bottom: 8px;
+  margin-top: 32px;
+  padding: 18px 0 8px;
 
   border-top: 1px solid var(--bd);
 
@@ -1834,22 +1669,18 @@ kbd {
   color: inherit;
 }
 
-/* ==========================================================
-   27. SURVOLS
-   ========================================================== */
+/* 19. SURVOL
+   ---------------------------------------------------------- */
 
 @media (hover: hover) and (pointer: fine) {
-  a:hover {
-    text-decoration-thickness: 1.5px;
-  }
-
   .nav-top a:hover:not([aria-current="page"]),
   .nav-bot a:hover:not([aria-current="page"]) {
     background: var(--surface);
     color: var(--tx);
   }
 
-  .hdr-xp > a:hover {
+  .hdr-xp > a:hover,
+  .foot a:hover {
     color: var(--ac);
   }
 
@@ -1873,7 +1704,7 @@ kbd {
     background: var(--surface-accent);
   }
 
-  .chip:hover:not(:disabled):not(.on):not([aria-pressed="true"]):not([aria-selected="true"]) {
+  .chip:hover:not(:disabled):not(.on) {
     border-color: var(--border-strong);
     background: var(--surface);
   }
@@ -1885,15 +1716,10 @@ kbd {
   .tokb:hover {
     background: var(--surface-accent);
   }
-
-  .foot a:hover {
-    color: var(--ac);
-  }
 }
 
-/* ==========================================================
-   28. TABLETTE ET BUREAU
-   ========================================================== */
+/* 20. TABLETTE ET BUREAU
+   ---------------------------------------------------------- */
 
 @media (min-width: 640px) {
   .stats.four {
@@ -1903,28 +1729,15 @@ kbd {
 
 @media (min-width: 900px) {
   .wrap {
-    padding-top: 42px;
-    padding-bottom: 64px;
-  }
-
-  .hdr-in {
-    display: grid;
-    grid-template-columns: minmax(170px, 240px) minmax(0, 1fr) minmax(170px, 240px);
-    gap: var(--space-lg);
-  }
-
-  .brand {
-    justify-self: start;
+    padding-top: 40px;
+    padding-bottom: 56px;
   }
 
   .nav-top {
     display: flex;
-    justify-self: center;
-    margin: 0;
   }
 
   .hdr-xp {
-    justify-self: end;
     margin-left: 0;
   }
 
@@ -1933,14 +1746,13 @@ kbd {
   }
 }
 
-/* ==========================================================
-   29. MOBILE
-   ========================================================== */
+/* 21. MOBILE
+   ---------------------------------------------------------- */
 
 @media (max-width: 639px) {
   .wrap {
-    padding-top: 24px;
-    padding-inline: 16px;
+    padding: 24px 16px;
+    padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px));
   }
 
   h1 {
@@ -1965,20 +1777,17 @@ kbd {
   .hdr-xp {
     flex: 0 0 auto;
     gap: 6px;
-
     font-size: 11px;
   }
 
   .stats {
     gap: 6px;
-    margin: 16px 0;
+    margin: 14px 0;
   }
 
   .st {
-    padding: 11px 8px;
-
+    padding: 11px 7px;
     font-size: 11px;
-    text-align: left;
   }
 
   .st b {
@@ -1987,7 +1796,7 @@ kbd {
 
   .box {
     padding: 16px;
-    border-radius: 12px;
+    border-radius: 11px;
   }
 
   .box.flat {
@@ -1998,28 +1807,14 @@ kbd {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .row.between {
-    align-items: flex-start;
-  }
-
-  .row.between > :last-child {
-    margin-left: 0;
-  }
-
   .btn {
     min-height: 46px;
     padding-inline: 13px;
-
     font-size: 15px;
-  }
-
-  .row .btn {
-    width: auto;
   }
 
   .ch {
     padding: 11px 12px;
-
     font-size: 15px;
   }
 
@@ -2051,20 +1846,18 @@ kbd {
 
   .modal {
     padding: 18px;
-    border-radius: 12px;
+    border-radius: 11px;
   }
 }
 
-/* ==========================================================
-   30. TRÈS PETITS ÉCRANS
-   ========================================================== */
-
+/* Très petits écrans */
 @media (max-width: 380px) {
   .brand small {
     display: none;
   }
 
   .hdr-xp {
+    gap: 4px;
     font-size: 10px;
   }
 
@@ -2085,7 +1878,7 @@ kbd {
   }
 
   .st {
-    padding-inline: 5px;
+    padding-inline: 4px;
   }
 
   .st b {
@@ -2093,46 +1886,28 @@ kbd {
   }
 }
 
-/* ==========================================================
-   31. CONTRASTE ÉLEVÉ
-   ========================================================== */
+/* 22. CONTRASTE ÉLEVÉ
+   ---------------------------------------------------------- */
 
-[data-theme="contraste"] .hdr,
-[data-theme="contraste"] .nav-bot {
+:root[data-theme="contraste"] .hdr,
+:root[data-theme="contraste"] .nav-bot {
   border-color: var(--bd);
   background: var(--card);
 }
 
-[data-theme="contraste"] .box,
-[data-theme="contraste"] .st,
-[data-theme="contraste"] .ch,
-[data-theme="contraste"] .bdg,
-[data-theme="contraste"] details,
-[data-theme="contraste"] input,
-[data-theme="contraste"] select,
-[data-theme="contraste"] textarea {
+:root[data-theme="contraste"] .box,
+:root[data-theme="contraste"] .st,
+:root[data-theme="contraste"] .ch,
+:root[data-theme="contraste"] .bdg,
+:root[data-theme="contraste"] details {
   border-width: 2px;
 }
 
-[data-theme="contraste"] .btn {
+:root[data-theme="contraste"] .btn {
   border-width: 2px;
 }
 
-[data-theme="contraste"] .bar {
+:root[data-theme="contraste"] .bar {
   border: 1px solid var(--bd);
   background: var(--bg);
-}
-
-/* ==========================================================
-   32. MOUVEMENT RÉDUIT
-   ========================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation: none !important;
-    transition: none !important;
-  }
 }
