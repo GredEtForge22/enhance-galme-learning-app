@@ -1,12 +1,11 @@
 @import "tailwindcss";
 
 /* ==========================================================
-   GALME — FEUILLE DE STYLE PRINCIPALE
+   GALME — STYLES COMPLETS
    ========================================================== */
 
-/* ==========================================================
-   1. THÈMES
-   ========================================================== */
+/* 1. THÈMES
+   ---------------------------------------------------------- */
 
 :root {
   --bg: #f1f2f6;
@@ -29,10 +28,10 @@
   --header-height: 68px;
 
   --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
+  --radius-md: 9px;
+  --radius-lg: 13px;
 
-  --surface: color-mix(in srgb, var(--card) 68%, var(--bg));
+  --surface: color-mix(in srgb, var(--card) 65%, var(--bg));
   --surface-accent: color-mix(in srgb, var(--ac) 8%, var(--card));
   --surface-warm: color-mix(in srgb, var(--ac2) 9%, var(--card));
   --surface-success: color-mix(in srgb, var(--ok) 9%, var(--card));
@@ -40,16 +39,12 @@
 
   --border-strong: color-mix(in srgb, var(--tx) 22%, var(--bd));
   --focus-ring: color-mix(in srgb, var(--ac) 24%, transparent);
-
-  --shadow-float:
-    0 12px 34px rgb(20 24 40 / 0.14),
-    0 3px 8px rgb(20 24 40 / 0.08);
+  --shadow-float: 0 10px 28px rgb(20 24 40 / 0.16);
 
   color-scheme: light;
 }
 
-/* Thème automatique sombre */
-
+/* Thème automatique selon les préférences de l'appareil */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]),
   :root[data-theme="auto"] {
@@ -63,14 +58,14 @@
     --ko: #ea817a;
     --bd: #303647;
     --on: #10131d;
+    --shadow-float: 0 10px 28px rgb(0 0 0 / 0.38);
 
     color-scheme: dark;
   }
 }
 
 /* Clair */
-
-[data-theme="clair"] {
+:root[data-theme="clair"] {
   --bg: #f1f2f6;
   --card: #ffffff;
   --tx: #1b2033;
@@ -86,8 +81,7 @@
 }
 
 /* Sombre */
-
-[data-theme="sombre"] {
+:root[data-theme="sombre"] {
   --bg: #10131d;
   --card: #191d2a;
   --tx: #eceef5;
@@ -98,13 +92,13 @@
   --ko: #ea817a;
   --bd: #303647;
   --on: #10131d;
+  --shadow-float: 0 10px 28px rgb(0 0 0 / 0.38);
 
   color-scheme: dark;
 }
 
 /* Aurore */
-
-[data-theme="aurore"] {
+:root[data-theme="aurore"] {
   --bg: #f5f0f7;
   --card: #fffaff;
   --tx: #301d3f;
@@ -120,8 +114,7 @@
 }
 
 /* Forêt */
-
-[data-theme="foret"] {
+:root[data-theme="foret"] {
   --bg: #111a16;
   --card: #192720;
   --tx: #e5eee9;
@@ -132,13 +125,13 @@
   --ko: #e58479;
   --bd: #304339;
   --on: #101914;
+  --shadow-float: 0 10px 28px rgb(0 0 0 / 0.38);
 
   color-scheme: dark;
 }
 
 /* Sépia */
-
-[data-theme="sepia"] {
+:root[data-theme="sepia"] {
   --bg: #eee7da;
   --card: #faf5ea;
   --tx: #3c3022;
@@ -154,8 +147,7 @@
 }
 
 /* Contraste élevé */
-
-[data-theme="contraste"] {
+:root[data-theme="contraste"] {
   --bg: #000000;
   --card: #080808;
   --tx: #ffffff;
@@ -166,15 +158,13 @@
   --ko: #ff8175;
   --bd: #a0a0a0;
   --on: #000000;
-
   --shadow-float: none;
 
   color-scheme: dark;
 }
 
-/* ==========================================================
-   2. BASE
-   ========================================================== */
+/* 2. BASE ET TYPOGRAPHIE
+   ---------------------------------------------------------- */
 
 *,
 *::before,
@@ -185,11 +175,12 @@
 html {
   min-height: 100%;
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-height) + 20px);
+  scroll-padding-top: calc(var(--header-height) + 18px);
   -webkit-text-size-adjust: 100%;
 }
 
 body {
+  min-width: 320px;
   min-height: 100vh;
   min-height: 100svh;
   margin: 0;
@@ -206,7 +197,7 @@ body {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--ac) 24%, transparent);
+  background: color-mix(in srgb, var(--ac) 22%, transparent);
   color: var(--tx);
 }
 
@@ -247,14 +238,17 @@ audio {
   margin: 16px 0;
 }
 
-a {
-  color: var(--ac);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
+p,
+.note,
+.lock-note,
+li {
+  text-align: justify;
+  text-align-last: start;
+  hyphens: auto;
 }
 
 p {
-  margin: 8px 0;
+  margin: 0 0 12px;
 }
 
 ul,
@@ -264,35 +258,37 @@ ol {
 }
 
 li + li {
-  margin-top: 4px;
+  margin-top: 5px;
+}
+
+a {
+  color: var(--ac);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 hr {
   height: 0;
   margin: 24px 0;
-
   border: 0;
   border-top: 1px solid var(--bd);
 }
-
-/* ==========================================================
-   3. TYPOGRAPHIE
-   ========================================================== */
 
 h1,
 h2,
 h3 {
   color: var(--tx);
+  text-align: left;
   overflow-wrap: anywhere;
 }
 
 h1 {
-  margin: 6px 0 8px;
+  margin: 4px 0 10px;
 
   font-family: var(--serif);
   font-size: clamp(2rem, 5vw, 2.7rem);
   font-weight: 400;
-  line-height: 1.14;
+  line-height: 1.16;
   letter-spacing: -0.025em;
 }
 
@@ -302,8 +298,7 @@ h2 {
   font-family: var(--serif);
   font-size: clamp(1.35rem, 3vw, 1.65rem);
   font-weight: 400;
-  line-height: 1.25;
-  letter-spacing: -0.015em;
+  line-height: 1.3;
 }
 
 h3 {
@@ -315,8 +310,8 @@ h3 {
   line-height: 1.4;
 }
 
-strong,
-b {
+b,
+strong {
   font-weight: 700;
 }
 
@@ -341,13 +336,8 @@ small {
   color: var(--tx);
 }
 
-/* ==========================================================
-   4. ACCESSIBILITÉ
-   ========================================================== */
-
-:focus {
-  outline: none;
-}
+/* 3. ACCESSIBILITÉ
+   ---------------------------------------------------------- */
 
 :focus-visible {
   outline: 3px solid var(--ac2);
@@ -387,24 +377,22 @@ small {
   }
 }
 
-/* ==========================================================
-   5. STRUCTURE
-   ========================================================== */
+/* 4. CONTENEUR ET MISE EN PAGE
+   ---------------------------------------------------------- */
 
 .wrap {
   width: 100%;
   max-width: var(--content-width);
-  margin-inline: auto;
-
+  margin: 0 auto;
   padding: 32px 20px;
   padding-bottom: calc(108px + env(safe-area-inset-bottom, 0px));
 }
 
 .wrap > h1 + p.mu {
   max-width: 680px;
-  margin-top: 0;
-  margin-bottom: 24px;
+  margin: 0 0 24px;
 
+  color: var(--mu);
   font-size: 16px;
   line-height: 1.7;
 }
@@ -430,9 +418,12 @@ small {
   display: grid;
   min-width: 0;
 
-  grid-template-columns:
-    repeat(auto-fill, minmax(min(100%, 260px), 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 250px), 1fr)
+  );
+  align-items: stretch;
+  gap: 14px;
 }
 
 .grid > * {
@@ -444,9 +435,8 @@ small {
   margin-top: 0;
 }
 
-/* ==========================================================
-   6. HEADER
-   ========================================================== */
+/* 5. HEADER ET NAVIGATION
+   ---------------------------------------------------------- */
 
 .hdr {
   position: sticky;
@@ -464,12 +454,11 @@ small {
   width: 100%;
   max-width: 1120px;
   min-height: var(--header-height);
-  margin-inline: auto;
+  margin: 0 auto;
+  padding: 8px 20px;
 
   align-items: center;
   gap: 16px;
-
-  padding: 8px 20px;
 }
 
 .brand {
@@ -482,7 +471,7 @@ small {
   font-family: var(--serif);
   font-size: 22px;
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1.2;
   letter-spacing: 0.12em;
 
   text-decoration: none;
@@ -506,7 +495,7 @@ small {
   min-width: 0;
 
   align-items: center;
-  gap: 2px;
+  gap: 3px;
 
   margin-left: auto;
 }
@@ -531,7 +520,6 @@ small {
 .nav-top a[aria-current="page"] {
   background: var(--surface-accent);
   color: var(--ac);
-
   box-shadow: inset 0 -2px 0 var(--ac);
 }
 
@@ -562,20 +550,14 @@ small {
   text-decoration: none;
 }
 
-/* ==========================================================
-   7. NAVIGATION MOBILE
-   ========================================================== */
-
 .nav-bot {
   position: fixed;
   z-index: 40;
-
   right: 0;
   bottom: 0;
   left: 0;
 
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  display: flex;
   gap: 2px;
 
   padding: 6px;
@@ -590,7 +572,8 @@ small {
 
   display: flex;
   min-width: 0;
-  min-height: 54px;
+  min-height: 52px;
+  flex: 1;
 
   flex-direction: column;
   align-items: center;
@@ -624,23 +607,19 @@ small {
 .nav-bot a[aria-current="page"]::before {
   position: absolute;
   top: 0;
-  right: 20%;
-  left: 20%;
+  right: 22%;
+  left: 22%;
 
   height: 2px;
-
   background: var(--ac);
-
   content: "";
 }
 
-/* ==========================================================
-   8. CARTES
-   ========================================================== */
+/* 6. CARTES ET STATISTIQUES
+   ---------------------------------------------------------- */
 
 .box {
   min-width: 0;
-
   margin-top: 14px;
   padding: 20px;
 
@@ -663,16 +642,12 @@ small {
   border-radius: var(--radius-md);
 }
 
-/* ==========================================================
-   9. STATISTIQUES
-   ========================================================== */
-
 .stats {
   display: grid;
   min-width: 0;
 
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
+  gap: 9px;
 
   margin: 18px 0;
 }
@@ -683,7 +658,6 @@ small {
 
 .st {
   min-width: 0;
-
   padding: 14px 12px;
 
   border: 1px solid var(--bd);
@@ -694,6 +668,7 @@ small {
 
   font-size: 13px;
   line-height: 1.45;
+  text-align: center;
   overflow-wrap: anywhere;
 }
 
@@ -706,7 +681,7 @@ small {
   font-family: var(--sans);
   font-size: clamp(22px, 4vw, 29px);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.035em;
   font-variant-numeric: tabular-nums;
 }
@@ -719,9 +694,8 @@ small {
   background: var(--surface);
 }
 
-/* ==========================================================
-   10. BOUTONS
-   ========================================================== */
+/* 7. BOUTONS
+   ---------------------------------------------------------- */
 
 .btn {
   display: flex;
@@ -754,8 +728,7 @@ small {
 
   transition:
     background-color 150ms ease,
-    border-color 150ms ease,
-    color 150ms ease;
+    border-color 150ms ease;
 }
 
 .btn.alt {
@@ -773,14 +746,13 @@ small {
   padding: 7px 12px;
 
   border-radius: var(--radius-sm);
-
   font-size: 14px;
 }
 
 .btn.warn {
   border-color: var(--ko);
   background: var(--ko);
-  color: #ffffff;
+  color: var(--on);
 }
 
 .btn:disabled {
@@ -791,9 +763,8 @@ small {
   transform: translateY(1px);
 }
 
-/* ==========================================================
-   11. CHOIX ET CARTES CLIQUABLES
-   ========================================================== */
+/* 8. CHOIX, FILTRES ET ÉTIQUETTES
+   ---------------------------------------------------------- */
 
 .ch {
   display: block;
@@ -839,21 +810,18 @@ small {
 .ch[aria-checked="true"] {
   border-color: var(--ac);
   background: var(--surface-accent);
-
   box-shadow: inset 3px 0 0 var(--ac);
 }
 
 .ch.ok {
   border-color: var(--ok);
   background: var(--surface-success);
-
   box-shadow: inset 3px 0 0 var(--ok);
 }
 
 .ch.ko {
   border-color: var(--ko);
   background: var(--surface-danger);
-
   box-shadow: inset 3px 0 0 var(--ko);
 }
 
@@ -867,9 +835,7 @@ small {
 
 .ch .kb {
   float: right;
-
-  margin-top: 1px;
-  margin-left: 10px;
+  margin: 1px 0 0 10px;
   padding: 1px 6px;
 
   border: 1px solid var(--bd);
@@ -883,10 +849,6 @@ small {
   font-weight: 400;
   line-height: 1.5;
 }
-
-/* ==========================================================
-   12. FILTRES ET TAGS
-   ========================================================== */
 
 .chip {
   display: inline-flex;
@@ -910,7 +872,6 @@ small {
   font-size: 13px;
   font-weight: 600;
   line-height: 1.4;
-
   text-align: center;
 
   transition:
@@ -934,7 +895,6 @@ small {
 .tag {
   display: inline-flex;
   max-width: 100%;
-
   align-items: center;
 
   padding: 2px 8px;
@@ -968,9 +928,8 @@ small {
   color: var(--ac);
 }
 
-/* ==========================================================
-   13. EXERCICES
-   ========================================================== */
+/* 9. EXERCICES ET FEEDBACK
+   ---------------------------------------------------------- */
 
 .big {
   margin: 20px 0;
@@ -978,7 +937,7 @@ small {
   font-family: var(--serif);
   font-size: clamp(2rem, 7vw, 2.8rem);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.22;
   letter-spacing: -0.02em;
 
   text-align: center;
@@ -998,8 +957,12 @@ small {
   font-size: 14px;
   font-weight: 500;
   line-height: 1.5;
-
   text-align: center;
+}
+
+p.lab,
+p[role="alert"] {
+  text-align: left;
 }
 
 .q-ctx {
@@ -1014,7 +977,8 @@ small {
 
   font-family: var(--serif);
   font-size: 18px;
-  line-height: 1.55;
+  line-height: 1.6;
+  text-align: left;
   overflow-wrap: anywhere;
 }
 
@@ -1030,7 +994,7 @@ small {
   font-family: var(--serif);
   font-size: clamp(1.9rem, 6vw, 2.5rem);
   font-weight: 400;
-  line-height: 1.3;
+  line-height: 1.35;
 
   text-align: center;
   overflow-wrap: anywhere;
@@ -1045,6 +1009,7 @@ small {
   font-size: 15px;
   font-weight: 700;
   line-height: 1.55;
+  text-align: left;
 }
 
 .fb.ok {
@@ -1068,9 +1033,8 @@ small {
   line-height: 1.6;
 }
 
-/* ==========================================================
-   14. PROGRESSION
-   ========================================================== */
+/* 10. PROGRESSION
+   ---------------------------------------------------------- */
 
 .top {
   display: flex;
@@ -1104,10 +1068,9 @@ small {
   max-width: 100%;
 
   border-radius: inherit;
-
   background: var(--ac2);
 
-  transition: width 300ms ease;
+  transition: width 250ms ease;
 }
 
 .bar.g i {
@@ -1118,9 +1081,8 @@ small {
   background: var(--ac);
 }
 
-/* ==========================================================
-   15. FORMULAIRES
-   ========================================================== */
+/* 11. FORMULAIRES
+   ---------------------------------------------------------- */
 
 label {
   display: block;
@@ -1131,19 +1093,15 @@ label {
   font-size: 14px;
   font-weight: 600;
   line-height: 1.5;
+  text-align: left;
 }
 
 :where(
-  input:not([type]),
-  input[type="text"],
-  input[type="search"],
-  input[type="password"],
-  input[type="email"],
-  input[type="url"],
-  input[type="tel"],
-  input[type="number"],
-  input[type="time"],
-  input[type="date"],
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not(
+      [type="submit"]
+    ):not([type="button"]):not([type="reset"]):not([type="hidden"]):not(
+      [type="file"]
+    ),
   select,
   textarea
 ) {
@@ -1164,23 +1122,14 @@ label {
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
-
-  transition:
-    border-color 150ms ease,
-    box-shadow 150ms ease;
 }
 
 :where(
-  input:not([type]),
-  input[type="text"],
-  input[type="search"],
-  input[type="password"],
-  input[type="email"],
-  input[type="url"],
-  input[type="tel"],
-  input[type="number"],
-  input[type="time"],
-  input[type="date"],
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not(
+      [type="submit"]
+    ):not([type="button"]):not([type="reset"]):not([type="hidden"]):not(
+      [type="file"]
+    ),
   select,
   textarea
 ):focus {
@@ -1198,7 +1147,6 @@ select {
   width: auto;
   min-height: 38px;
   padding: 6px 30px 6px 9px;
-
   font-size: 15px;
 }
 
@@ -1240,9 +1188,8 @@ p[role="alert"] {
   font-weight: 600;
 }
 
-/* ==========================================================
-   16. DÉTAILS
-   ========================================================== */
+/* 12. DÉTAILS ET TABLEAUX
+   ---------------------------------------------------------- */
 
 details {
   margin-top: 10px;
@@ -1266,6 +1213,7 @@ summary {
   font-size: 15px;
   font-weight: 700;
   line-height: 1.5;
+  text-align: left;
 }
 
 summary::marker {
@@ -1276,27 +1224,15 @@ details[open] > summary {
   margin-bottom: 4px;
 }
 
-/* ==========================================================
-   17. TABLEAUX
-   ========================================================== */
-
 table {
-  display: block;
   width: 100%;
   max-width: 100%;
-
   margin: 10px 0 14px;
 
-  overflow-x: auto;
   border-collapse: collapse;
 
   font-size: 14px;
   line-height: 1.55;
-}
-
-thead,
-tbody {
-  width: 100%;
 }
 
 th,
@@ -1321,7 +1257,6 @@ th {
 
 td:first-child {
   width: 42%;
-
   font-family: var(--serif);
   font-size: 16px;
 }
@@ -1340,50 +1275,24 @@ tbody tr:last-child td {
   border-bottom: 0;
 }
 
-/* ==========================================================
-   18. INDICATEURS
-   ========================================================== */
+kbd {
+  padding: 1px 6px;
 
-.dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
+  border: 1px solid var(--bd);
+  border-bottom-width: 2px;
+  border-radius: 4px;
 
-  margin-right: 6px;
-  border-radius: 50%;
+  background: var(--surface);
+  color: var(--tx);
 
-  background: var(--bd);
-  vertical-align: 1px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.7;
 }
 
-.dot.seen {
-  background: var(--ac);
-}
-
-.dot.learning {
-  background: var(--ac2);
-}
-
-.dot.mastered {
-  background: var(--ok);
-}
-
-.swatch {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-
-  margin-right: 6px;
-
-  border: 1px solid var(--border-strong);
-  border-radius: 50%;
-
-  vertical-align: -2px;
-}
-
-/* ==========================================================
-   19. ONGLETS
-   ========================================================== */
+/* 13. ONGLETS
+   ---------------------------------------------------------- */
 
 .tabs {
   display: flex;
@@ -1398,13 +1307,11 @@ tbody tr:last-child td {
   overflow-x: auto;
   border-bottom: 1px solid var(--bd);
 
-  scrollbar-width: thin;
   scrollbar-color: var(--bd) transparent;
+  scrollbar-width: thin;
 }
 
 .tab {
-  position: relative;
-
   flex: 0 0 auto;
 
   padding: 9px 1px 10px;
@@ -1444,9 +1351,8 @@ tbody tr:last-child td {
   color: var(--ac);
 }
 
-/* ==========================================================
-   20. LECTURE INTERACTIVE
-   ========================================================== */
+/* 14. LECTURE INTERACTIVE
+   ---------------------------------------------------------- */
 
 .sent {
   display: flex;
@@ -1457,15 +1363,16 @@ tbody tr:last-child td {
 
   font-family: var(--serif);
   font-size: 20px;
-  line-height: 1.4;
+  line-height: 1.5;
+  text-align: left;
   overflow-wrap: anywhere;
 }
 
 .tokb {
   max-width: 100%;
-
   padding: 0 1px;
 
+  appearance: none;
   border: 0;
   border-bottom: 1px dashed var(--ac);
 
@@ -1475,10 +1382,6 @@ tbody tr:last-child td {
   font: inherit;
   text-align: inherit;
   overflow-wrap: anywhere;
-
-  transition:
-    background-color 150ms ease,
-    border-color 150ms ease;
 }
 
 .tokb.on {
@@ -1497,37 +1400,20 @@ tbody tr:last-child td {
 
   font-size: 14px;
   line-height: 1.65;
+  text-align: left;
   overflow-wrap: anywhere;
 }
 
 mark {
   padding: 1px 2px;
-
   border-radius: 2px;
 
   background: color-mix(in srgb, var(--ac2) 30%, transparent);
   color: inherit;
 }
 
-kbd {
-  padding: 1px 6px;
-
-  border: 1px solid var(--bd);
-  border-bottom-width: 2px;
-  border-radius: 4px;
-
-  background: var(--surface);
-  color: var(--tx);
-
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.7;
-}
-
-/* ==========================================================
-   21. CALENDRIER
-   ========================================================== */
+/* 15. CALENDRIER ET BADGES
+   ---------------------------------------------------------- */
 
 .cal {
   display: grid;
@@ -1561,7 +1447,6 @@ kbd {
   aspect-ratio: auto;
 
   border: 0;
-
   background: transparent;
   color: var(--mu);
 
@@ -1582,7 +1467,6 @@ kbd {
   border-color: var(--ac);
   background: var(--ac);
   color: var(--on);
-
   font-weight: 700;
 }
 
@@ -1591,9 +1475,29 @@ kbd {
   outline-offset: 1px;
 }
 
-/* ==========================================================
-   22. BADGES
-   ========================================================== */
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+
+  margin-right: 6px;
+  border-radius: 50%;
+
+  background: var(--bd);
+  vertical-align: 1px;
+}
+
+.dot.seen {
+  background: var(--ac);
+}
+
+.dot.learning {
+  background: var(--ac2);
+}
+
+.dot.mastered {
+  background: var(--ok);
+}
 
 .bdg {
   display: flex;
@@ -1609,30 +1513,25 @@ kbd {
   border-radius: var(--radius-md);
 
   background: var(--card);
-
   text-align: center;
 }
 
 .bdg .ic {
   display: block;
   margin-bottom: 3px;
-
   font-size: 28px;
   line-height: 1;
 }
 
 .bdg b {
   display: block;
-
   font-size: 13px;
   line-height: 1.4;
 }
 
 .bdg small {
   display: block;
-
   color: var(--mu);
-
   font-size: 11px;
   line-height: 1.4;
 }
@@ -1647,22 +1546,32 @@ kbd {
   filter: grayscale(1);
 }
 
-/* ==========================================================
-   23. GRAPHIQUES
-   ========================================================== */
+.swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+
+  margin-right: 6px;
+
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+
+  vertical-align: -2px;
+}
+
+/* 16. GRAPHIQUES
+   ---------------------------------------------------------- */
 
 .chart {
   display: block;
   width: 100%;
   height: auto;
   max-height: 340px;
-
   margin-top: 12px;
 }
 
-/* ==========================================================
-   24. MODALES
-   ========================================================== */
+/* 17. MODALES ET NOTIFICATIONS
+   ---------------------------------------------------------- */
 
 .overlay {
   position: fixed;
@@ -1670,7 +1579,6 @@ kbd {
   inset: 0;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
@@ -1679,7 +1587,6 @@ kbd {
   padding-bottom: max(16px, env(safe-area-inset-bottom, 0px));
 
   overflow-y: auto;
-
   background: rgb(5 8 18 / 0.68);
 }
 
@@ -1690,7 +1597,6 @@ kbd {
   max-height: calc(100dvh - 32px);
 
   padding: 22px;
-
   overflow-y: auto;
 
   border: 1px solid var(--bd);
@@ -1708,10 +1614,6 @@ kbd {
   margin-bottom: 0;
 }
 
-/* ==========================================================
-   25. NOTIFICATIONS
-   ========================================================== */
-
 .toasts {
   position: fixed;
   z-index: 70;
@@ -1721,43 +1623,38 @@ kbd {
   left: 12px;
 
   display: flex;
-
   flex-direction: column;
   align-items: center;
   gap: 8px;
 
+  padding: 0 12px;
   pointer-events: none;
 }
 
 .toast {
   width: max-content;
   max-width: min(100%, 420px);
-
   padding: 10px 15px;
 
   border: 1px solid var(--border-strong);
   border-radius: 8px;
 
   background: var(--tx);
-  color: var(--card);
-  box-shadow: var(--shadow-float);
+  color: var(--bg);
 
   font-size: 14px;
   font-weight: 600;
   line-height: 1.5;
-
   text-align: center;
   overflow-wrap: anywhere;
 }
 
-/* ==========================================================
-   26. FOOTER
-   ========================================================== */
+/* 18. PIED DE PAGE
+   ---------------------------------------------------------- */
 
 .foot {
   margin-top: 32px;
-  padding-top: 18px;
-  padding-bottom: 8px;
+  padding: 18px 0 8px;
 
   border-top: 1px solid var(--bd);
 
@@ -1772,22 +1669,18 @@ kbd {
   color: inherit;
 }
 
-/* ==========================================================
-   27. SURVOLS
-   ========================================================== */
+/* 19. SURVOL
+   ---------------------------------------------------------- */
 
 @media (hover: hover) and (pointer: fine) {
-  .nav-top a:hover:not([aria-current="page"]) {
-    background: var(--surface);
-    color: var(--tx);
-  }
-
+  .nav-top a:hover:not([aria-current="page"]),
   .nav-bot a:hover:not([aria-current="page"]) {
     background: var(--surface);
     color: var(--tx);
   }
 
-  .hdr-xp > a:hover {
+  .hdr-xp > a:hover,
+  .foot a:hover {
     color: var(--ac);
   }
 
@@ -1823,15 +1716,10 @@ kbd {
   .tokb:hover {
     background: var(--surface-accent);
   }
-
-  .foot a:hover {
-    color: var(--ac);
-  }
 }
 
-/* ==========================================================
-   28. TABLETTE ET BUREAU
-   ========================================================== */
+/* 20. TABLETTE ET BUREAU
+   ---------------------------------------------------------- */
 
 @media (min-width: 640px) {
   .stats.four {
@@ -1841,19 +1729,12 @@ kbd {
 
 @media (min-width: 900px) {
   .wrap {
-    padding-top: 42px;
-    padding-bottom: 60px;
-  }
-
-  .hdr-in {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    padding-top: 40px;
+    padding-bottom: 56px;
   }
 
   .nav-top {
     display: flex;
-    justify-content: center;
-    margin-left: 0;
   }
 
   .hdr-xp {
@@ -1865,14 +1746,13 @@ kbd {
   }
 }
 
-/* ==========================================================
-   29. MOBILE
-   ========================================================== */
+/* 21. MOBILE
+   ---------------------------------------------------------- */
 
 @media (max-width: 639px) {
   .wrap {
-    padding-top: 24px;
-    padding-inline: 16px;
+    padding: 24px 16px;
+    padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px));
   }
 
   h1 {
@@ -1897,7 +1777,6 @@ kbd {
   .hdr-xp {
     flex: 0 0 auto;
     gap: 6px;
-
     font-size: 11px;
   }
 
@@ -1908,9 +1787,7 @@ kbd {
 
   .st {
     padding: 11px 7px;
-
     font-size: 11px;
-    text-align: center;
   }
 
   .st b {
@@ -1919,7 +1796,7 @@ kbd {
 
   .box {
     padding: 16px;
-    border-radius: 12px;
+    border-radius: 11px;
   }
 
   .box.flat {
@@ -1933,13 +1810,11 @@ kbd {
   .btn {
     min-height: 46px;
     padding-inline: 13px;
-
     font-size: 15px;
   }
 
   .ch {
     padding: 11px 12px;
-
     font-size: 15px;
   }
 
@@ -1971,20 +1846,18 @@ kbd {
 
   .modal {
     padding: 18px;
-    border-radius: 12px;
+    border-radius: 11px;
   }
 }
 
-/* ==========================================================
-   30. TRÈS PETITS ÉCRANS
-   ========================================================== */
-
+/* Très petits écrans */
 @media (max-width: 380px) {
   .brand small {
     display: none;
   }
 
   .hdr-xp {
+    gap: 4px;
     font-size: 10px;
   }
 
@@ -2013,32 +1886,28 @@ kbd {
   }
 }
 
-/* ==========================================================
-   31. THÈME CONTRASTE
-   ========================================================== */
+/* 22. CONTRASTE ÉLEVÉ
+   ---------------------------------------------------------- */
 
-[data-theme="contraste"] .hdr,
-[data-theme="contraste"] .nav-bot {
+:root[data-theme="contraste"] .hdr,
+:root[data-theme="contraste"] .nav-bot {
   border-color: var(--bd);
   background: var(--card);
 }
 
-[data-theme="contraste"] .box,
-[data-theme="contraste"] .st,
-[data-theme="contraste"] .ch,
-[data-theme="contraste"] .bdg,
-[data-theme="contraste"] details,
-[data-theme="contraste"] input,
-[data-theme="contraste"] select,
-[data-theme="contraste"] textarea {
+:root[data-theme="contraste"] .box,
+:root[data-theme="contraste"] .st,
+:root[data-theme="contraste"] .ch,
+:root[data-theme="contraste"] .bdg,
+:root[data-theme="contraste"] details {
   border-width: 2px;
 }
 
-[data-theme="contraste"] .btn {
+:root[data-theme="contraste"] .btn {
   border-width: 2px;
 }
 
-[data-theme="contraste"] .bar {
+:root[data-theme="contraste"] .bar {
   border: 1px solid var(--bd);
   background: var(--bg);
 }
