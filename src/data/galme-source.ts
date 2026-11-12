@@ -18,6 +18,8 @@ vosu|vous|0
 lorai|ils / elles|0
 oйi|il/lui|0
 oйa|elle|0
+etze|tout|1
+sha-etze|rien|1
 sha|non / pas / faux|1
 pre-|passé|1
 fu-|futur|1
@@ -91,6 +93,7 @@ vayara sola pazo|bonne nuit|3
 aleksi|aller au ski|3
 sola|soleil|3
 braйdol|bêtise|3
+emiat|intelligent|3
 kilderic|vaillant|3
 pazo|paix|3
 langйo|langue|3
@@ -100,6 +103,7 @@ pajol|l'avare|3
 visйa|verre|3
 veirdo|bizarre|3
 йas|en|3
+curoy|discipline|3
 voй|eau|3
 voйona|vodka|3
 vayara|résultat|3
@@ -110,8 +114,11 @@ ehisarok|bienvenue|3
 vrayama|vraiment|3
 йuna|maintenant|3
 zolo|seul|3
+orioй|heureux|3
 poko|un peu/petit|3
 sali-vuro|à lui|3
+fali|facile|3
+chamo|sympa|3
 mona|argent / monnaie|4
 varo|grand|4
 morila|tristesse|4
@@ -263,6 +270,7 @@ ena pre-yusso йa Galme|j'ai appris le galme|5
 siva pre-spozi-ko йa Galme ?|as-tu parlé galme ?|5
 lorai pre-saroke|ils / elles sont venu(e)s|5
 narai pre-maha fela|il / elle a acheté un chat|5
+san ilie sha fali ilie curoy|ça m'est facile d'être discipliné|5
 josu pre-agйo йa luna|nous avons vu la lune|5
 vosu pre-kanora-ko saй ?|avez-vous compris cela ?|5
 ena fu-yusso saй langйo|j'apprendrai cette langue|5
@@ -296,6 +304,6 @@ ilie-ko odia ilie-sha-ko ?|être ou ne pas être|5
 ena sagйe bi ena sagйe-sha|je sais que je ne sais rien|5
 ena poko spozi йa Galme, thoda, ena vi spozi йa fraйzi|je parle un peu le galme, mais je parle bien le français|5`;
 export const TD:string[]=["Pronom","Particule","Verbe","Expression","Nom","Phrase"];
-export const TX:Record<string,string>={veirdo:"Adjectif",kilderic:"Adjectif",braйdol:"Nom",langйo:"Nom",anapi:"Nom",flezano:"Nom",aleksi:"Expression",siyatura:"Nom",vi:"Adverbe",roloza:"Adverbe",eh:"Pronom",poniv:"Particule",delora:"Verbe",credo:"Verbe",kaska:"Nom",pajol:"Nom",visйa:"Nom",йas:"Particule","йameй kaska":"Expression",voй:"Nom",voйona:"Nom",morila:"Nom",gabei:"Expression",saй:"Pronom",lazo:"Adverbe",seran:"Pronom",sogno:"Nom",йajai:"Pronom",sola:"Nom",pazo:"Nom",vayara:"Nom",vrayama:"Adverbe",nuna:"Adverbe",zolo:"Adjectif",poko:"Adverbe","sali-vuro":"Pronom",varo:"Adjectif",bela:"Adjectif",spezo:"Adjectif",deziro:"Adjectif",shapagйa:"Adjectif",fraйzi:"Adjectif"};
+export const TX:Record<string,string>={curoy:"Nom",emiat:"Adjectif",chamo:"Adjectif",fali:"Adjectif",orioй:"Adjectif",veirdo:"Adjectif",kilderic:"Adjectif",braйdol:"Nom",langйo:"Nom",anapi:"Nom",flezano:"Nom",aleksi:"Expression",siyatura:"Nom",vi:"Adverbe",roloza:"Adverbe",eh:"Pronom",poniv:"Particule",delora:"Verbe",credo:"Verbe",kaska:"Nom",pajol:"Nom",visйa:"Nom",йas:"Particule","йameй kaska":"Expression",voй:"Nom",voйona:"Nom",morila:"Nom",gabei:"Expression",saй:"Pronom",lazo:"Adverbe",seran:"Pronom",sogno:"Nom",йajai:"Pronom",sola:"Nom",pazo:"Nom",vayara:"Nom",vrayama:"Adverbe",nuna:"Adverbe",zolo:"Adjectif",poko:"Adverbe","sali-vuro":"Pronom",varo:"Adjectif",bela:"Adjectif",spezo:"Adjectif",deziro:"Adjectif",shapagйa:"Adjectif",fraйzi:"Adjectif"};
 export const TO:string[]=["Pronom","Verbe","Nom","Adjectif","Adverbe","Particule","Expression","Phrase"];
 export const TT:Record<string,string>={Pronom:"Pronoms",Verbe:"Verbes",Nom:"Noms",Adjectif:"Adjectifs",Adverbe:"Adverbes",Particule:"Particules et petits mots",Expression:"Expressions",Phrase:"Phrases"};
