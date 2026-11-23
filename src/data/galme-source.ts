@@ -291,7 +291,7 @@ ena pre-yusso йa Galme|j'ai appris le galme|5
 siva pre-spozi-ko йa Galme ?|as-tu parlé galme ?|5
 lorai pre-saroke|ils / elles sont venu(e)s|5
 narai pre-maha fela|il / elle a acheté un chat|5
-san ilie sha fali ilie curoy|ça m'est facile d'être discipliné|5
+san ilie fali ilie curoy|ça m'est facile d'être discipliné|5
 josu pre-agйo йa luna|nous avons vu la lune|5
 vosu pre-kanora-ko saй ?|avez-vous compris cela ?|5
 ena fu-yusso saй langйo|j'apprendrai cette langue|5
