@@ -25,10 +25,14 @@ pre-|passé|1
 fu-|futur|1
 -vo (ou ve-)|conditionnel|1
 -ko|question|1
+wu|déjà|1
 lano|mon / ma / me|1
 rae|son / sa / à lui / à elle|1
 lanoslo|notre / dans notre|1
+etze|tout|1
+sha-etze|rien|1
 o|comme / avec / à|1
+so’llnu|souvent|1
 bi|que|1
 su|sur|1
 eda|et|1
@@ -55,6 +59,7 @@ sumйo|douter|2
 besara|embrasser|2
 agйo|voir|2
 lagйa|entendre|2
+pesia|continuer|2
 loroke|faire / travailler|2
 sagйe|savoir|2
 i|être (diminutif)|2
@@ -69,10 +74,12 @@ daroke|donner|2
 amora|aimer|2
 manka|manquer|2
 yono|empêcher|2
+cazo|faire|2
 spozi|parler|2
 kala|appeler|2
 rigйa|diriger|2
 funizi|devenir|2
+Illomo|pononcer|2
 kuye|dire|2
 selore|dire|2
 malo|penser|2
@@ -82,27 +89,40 @@ lamado|puer|2
 siyatura|signature|2
 hesidare|hésiter|2
 tsushima|dominer|2
+llava|se lever|2
 yusso|apprendre|2
 delora|vouloir|2
+Faйya|faner|2
+prozi|demander|2
 credo|croire|2
 zhoyama|bonjour|3
 viwansaj|bonsoir|3
 kaska|chapeau|3
+stena|neuille|3
 йameй kaska|prendre son chapeau = féliciter|3
 vayara sola pazo|bonne nuit|3
 aleksi|aller au ski|3
 sola|soleil|3
 braйdol|bêtise|3
 emiat|intelligent|3
+svada|machin/truc/chose|3
 kilderic|vaillant|3
+roma|nom|3
+konal|question|3
 pazo|paix|3
 langйo|langue|3
+emiat|intelligent|3
 anapi|amour pur, dévoué|3
 flezano|coup de foudre|3
 pajol|l'avare|3
 visйa|verre|3
+frati|frère|3
+sora|soeur|3
+egzame|exemple|3
+Faй|fleur|3
 veirdo|bizarre|3
 йas|en|3
+orioй|heureux|3
 curoy|discipline|3
 voй|eau|3
 voйona|vodka|3
@@ -127,6 +147,7 @@ sosiede|la société|4
 lliochi|yeux|4
 fayida|échec / faillite|4
 fela|chat|4
+chamo|sympa|4
 kora|cœur|4
 luna|lune|4
 noxe|nuit|4
@@ -304,6 +325,6 @@ ilie-ko odia ilie-sha-ko ?|être ou ne pas être|5
 ena sagйe bi ena sagйe-sha|je sais que je ne sais rien|5
 ena poko spozi йa Galme, thoda, ena vi spozi йa fraйzi|je parle un peu le galme, mais je parle bien le français|5`;
 export const TD:string[]=["Pronom","Particule","Verbe","Expression","Nom","Phrase"];
-export const TX:Record<string,string>={curoy:"Nom",emiat:"Adjectif",chamo:"Adjectif",fali:"Adjectif",orioй:"Adjectif",veirdo:"Adjectif",kilderic:"Adjectif",braйdol:"Nom",langйo:"Nom",anapi:"Nom",flezano:"Nom",aleksi:"Expression",siyatura:"Nom",vi:"Adverbe",roloza:"Adverbe",eh:"Pronom",poniv:"Particule",delora:"Verbe",credo:"Verbe",kaska:"Nom",pajol:"Nom",visйa:"Nom",йas:"Particule","йameй kaska":"Expression",voй:"Nom",voйona:"Nom",morila:"Nom",gabei:"Expression",saй:"Pronom",lazo:"Adverbe",seran:"Pronom",sogno:"Nom",йajai:"Pronom",sola:"Nom",pazo:"Nom",vayara:"Nom",vrayama:"Adverbe",nuna:"Adverbe",zolo:"Adjectif",poko:"Adverbe","sali-vuro":"Pronom",varo:"Adjectif",bela:"Adjectif",spezo:"Adjectif",deziro:"Adjectif",shapagйa:"Adjectif",fraйzi:"Adjectif"};
+export const TX:Record<string,string>={konal:"Nom",so’llnu:"Adverbe",cazo:"Verbe",svada:"Nom",Illomo:"Verbe",Faйya:"Verbe",Faй:"Nom",stena:"Nom",prozi:"Verbe",exame:"Nom",frati:"Nom",sora:"Nom",roma:"Nom",llava:"Verbe",emiat:"Adjectif",chamo:"Adverbe",orioй:"Adjectif",curoy:"Nom",emiat:"Adjectif",chamo:"Adjectif",fali:"Adjectif",orioй:"Adjectif",veirdo:"Adjectif",kilderic:"Adjectif",braйdol:"Nom",langйo:"Nom",anapi:"Nom",flezano:"Nom",aleksi:"Expression",siyatura:"Nom",vi:"Adverbe",roloza:"Adverbe",eh:"Pronom",poniv:"Particule",delora:"Verbe",credo:"Verbe",kaska:"Nom",pajol:"Nom",visйa:"Nom",йas:"Particule","йameй kaska":"Expression",voй:"Nom",voйona:"Nom",morila:"Nom",gabei:"Expression",saй:"Pronom",lazo:"Adverbe",seran:"Pronom",sogno:"Nom",йajai:"Pronom",sola:"Nom",pazo:"Nom",vayara:"Nom",vrayama:"Adverbe",nuna:"Adverbe",zolo:"Adjectif",poko:"Adverbe","sali-vuro":"Pronom",varo:"Adjectif",bela:"Adjectif",spezo:"Adjectif",deziro:"Adjectif",shapagйa:"Adjectif",fraйzi:"Adjectif"};
 export const TO:string[]=["Pronom","Verbe","Nom","Adjectif","Adverbe","Particule","Expression","Phrase"];
 export const TT:Record<string,string>={Pronom:"Pronoms",Verbe:"Verbes",Nom:"Noms",Adjectif:"Adjectifs",Adverbe:"Adverbes",Particule:"Particules et petits mots",Expression:"Expressions",Phrase:"Phrases"};
