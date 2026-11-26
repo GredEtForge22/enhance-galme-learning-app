@@ -40,6 +40,7 @@ odia|ou|1
 thoda|mais|1
 poniv|parce que|1
 zebo|pour|1
+komo|comment|1
 skoro bi|étant donné que|1
 bardio|grâce à|1
 йa|le / la|1
@@ -326,7 +327,7 @@ ena sagйe bi ena sagйe-sha|je sais que je ne sais rien|5
 ena poko spozi йa Galme, thoda, ena vi spozi йa fraйzi|je parle un peu le galme, mais je parle bien le français|5`;
 export const TD:string[]=["Pronom","Particule","Verbe","Expression","Nom","Phrase"];
 export const TX: Record<string, string> = {
-  "konal": "Nom", "so’llnu": "Adverbe", "cazo": "Verbe", "svada": "Nom",
+  "komo":"Particule","konal": "Nom", "so’llnu": "Adverbe", "cazo": "Verbe", "svada": "Nom",
   "Illomo": "Verbe", "Faйya": "Verbe", "Faй": "Nom", "stena": "Nom",
   "prozi": "Verbe", "exame": "Nom", "frati": "Nom", "sora": "Nom",
   "roma": "Nom", "llava": "Verbe", "emiat": "Adjectif",
